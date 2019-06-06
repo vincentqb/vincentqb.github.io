@@ -1,11 +1,11 @@
 {
-    "title": "Resume",
-    "name": "startbootstrap-resume",
+    "title": "Vincent Quenneville-Belair",
+    "name": "vincentqb-resume",
     "version": "5.0.6",
     "scripts": {
         "start": "gulp watch"
     },
-    "description": "Resume is a simple, yet elegant resume and CV theme for Bootstrap 4.",
+    "description": "Vincent Quenneville-Belair",
     "keywords": [
         "css",
         "sass",
