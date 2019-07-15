@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/vincentqb
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://vincentqb.github.com
+  * I am vincentqb (https://keybase.io/vincentqb) on keybase.
+  * I have a public key ASDPcP7TscTrC5RsLzZdBBEGEMLrJn9IYAxqWSzWQ993LAo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120cf70fed3b1c4eb0b946c2f365d04110610c2eb267f48600c6a592cd643df772c0a",
+      "host": "keybase.io",
+      "kid": "0120cf70fed3b1c4eb0b946c2f365d04110610c2eb267f48600c6a592cd643df772c0a",
+      "uid": "58524bd56741f22b0564f3ccce22b119",
+      "username": "vincentqb"
+    },
+    "merkle_root": {
+      "ctime": 1563196831,
+      "hash": "63f44967d0bf2a0104045a432d3e7db7c6750c1ba19a960c613a16f37ea429b423e457c7133b16ca807477d7f8d6e5ddd5d47a83334e0dc3150b4b4126f9214d",
+      "hash_meta": "e7436e803f7b185e4895352a568252fe324a2ec3182e5c51fe1e68f452d546ea",
+      "seqno": 5765423
+    },
+    "service": {
+      "entropy": "QjhyPdT6vgy7vmbAMfVsWmlo",
+      "hostname": "vincentqb.github.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "4.2.0"
+  },
+  "ctime": 1563196844,
+  "expire_in": 504576000,
+  "prev": "822ed45cb2716224e25bca9b6a95e71052bb62237aa615df706a2d06e9dd9b29",
+  "seqno": 5,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgz3D+07HE6wuUbC82XQQRBhDC6yZ/SGAMalks1kPfdywKp3BheWxvYWTESpcCBcQggi7UXLJxYiTiW8qbapXnEFK7YiN6phXfcGotBundmynEIJRaP+Zjm3nxLi039TYkcg4l1ZISetWM0EqCxZZ9r4JmAgHCo3NpZ8RAY89yN4PEZM5ksTbWhU/J1c73A2EbicOauUrTfTwEXw1uXUYwvZ8Pcbe7OwRPsyIwRvmpXQQSRfwdTW3QJRq/CqhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIIB1RTlBVzmg18268vb55BuXqFEASOXkLA3T1aztD9tFo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/vincentqb
+
+==================================================================
