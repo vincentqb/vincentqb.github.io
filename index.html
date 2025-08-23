@@ -104,6 +104,11 @@
             background-color: #f8f9fa;
         }
 
+        .section-profile {
+            background-color: #fff;
+            min-height: 80vh;
+        }
+
         .section-title {
             font-size: 3rem;
             font-weight: 700;
@@ -228,6 +233,66 @@
             margin-top: 0.5rem;
         }
 
+        /* Profile Section Styles */
+        .profile-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .profile-image-container {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #e74c3c;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(231, 76, 60, 0.2);
+        }
+
+        .profile-image:hover {
+            border-color: #c0392b;
+            transform: scale(1.05);
+            box-shadow: 0 12px 48px rgba(231, 76, 60, 0.3);
+        }
+
+        .profile-placeholder {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 4px solid #e74c3c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: #e74c3c;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(231, 76, 60, 0.2);
+        }
+
+        .profile-placeholder:hover {
+            border-color: #c0392b;
+            transform: scale(1.05);
+            box-shadow: 0 12px 48px rgba(231, 76, 60, 0.3);
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+        }
+
+        .profile-text {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
         @media screen and (max-width: 768px) {
             .degree-line {
                 font-size: 1.1rem;
@@ -235,6 +300,20 @@
 
             .awards-text {
                 font-size: 0.9rem;
+            }
+
+            .profile-image, .profile-placeholder {
+                width: 220px;
+                height: 220px;
+            }
+
+            .profile-placeholder {
+                font-size: 3rem;
+            }
+
+            .profile-text {
+                font-size: 1rem;
+                padding: 0 1rem;
             }
         }
 
@@ -246,6 +325,66 @@
 
         html {
             scroll-behavior: smooth;
+        }
+
+        /* Sticky Navigation */
+        .navbar.is-sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.is-sticky .navbar-brand .navbar-item {
+            color: #2c3e50;
+        }
+
+        /* Return to Top Button */
+        .return-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(231, 76, 60, 0.3);
+            z-index: 999;
+        }
+
+        .return-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .return-to-top:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        }
+
+        @media screen and (max-width: 768px) {
+            .return-to-top {
+                bottom: 1.5rem;
+                right: 1.5rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
@@ -268,6 +407,7 @@
                         <div class="navbar-end">
                             <a class="navbar-item" onclick="scrollToSection('experience')">Experience</a>
                             <a class="navbar-item" onclick="scrollToSection('education')">Education</a>
+                            <a class="navbar-item" onclick="scrollToSection('profile')">Profile</a>
                         </div>
                     </div>
                 </div>
@@ -390,19 +530,32 @@
         </div>
     </section>
 
-    <section class="hero">
-        <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="columns is-centered">
-                    <div class="column is-10">
-                        <h1 class="main-title">
-                            <span class="vincent">Vincent</span> Quenneville-Bélair, PhD
-                        </h1>
+    <section id="profile" class="section-slide section-profile">
+        <div class="container">
+            <div class="has-text-centered">
+                <h2 class="section-title">Profile</h2>
+            </div>
+
+            <div class="profile-container">
+                <div class="profile-image-container">
+                    <!-- Replace this placeholder with your actual image -->
+                    <!-- <img src="path/to/your/profile-image.jpg" alt="Vincent Quenneville-Bélair" class="profile-image"> -->
+                    <div class="profile-placeholder">
+                        <i class="fas fa-user"></i>
                     </div>
+                </div>
+
+                <div class="profile-text">
+                    <p>Applied mathematician with expertise in machine learning, deep learning, and supply chain optimization. Passionate about developing innovative solutions that bridge theoretical mathematics with practical applications in technology and business.</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Return to Top Button -->
+    <button class="return-to-top" onclick="scrollToTop()" title="Return to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script>
         // Smooth scroll to section
@@ -412,8 +565,40 @@
             });
         }
 
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show/hide return to top button and make navbar sticky
+        function handleScroll() {
+            const returnToTopBtn = document.querySelector('.return-to-top');
+            const navbar = document.querySelector('.navbar');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Show/hide return to top button
+            if (scrollTop > 300) {
+                returnToTopBtn.classList.add('show');
+            } else {
+                returnToTopBtn.classList.remove('show');
+            }
+
+            // Make navbar sticky after first section
+            if (scrollTop > 100) {
+                navbar.classList.add('is-sticky');
+            } else {
+                navbar.classList.remove('is-sticky');
+            }
+        }
+
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', () => {
+            // Add scroll listener
+            window.addEventListener('scroll', handleScroll);
+
             const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
             if ($navbarBurgers.length > 0) {
