@@ -44,11 +44,11 @@
             color: #666;
             font-weight: 500;
             cursor: pointer;
+            background-color: transparent;
         }
 
         .navbar-menu .navbar-item:hover {
             color: #e74c3c;
-            background-color: transparent;
         }
 
         .main-title {
@@ -72,18 +72,17 @@
 
         .social-icons {
             margin-top: 2rem;
+            font-size: 1.5rem;
         }
 
         .social-icons a {
             color: #7f8c8d;
-            font-size: 1.5rem;
             margin: 0 1rem;
             transition: all 0.3s ease;
         }
 
         .social-icons a:hover {
             color: #e74c3c;
-            transform: translateY(-2px);
         }
 
         .hero-body {
@@ -100,6 +99,14 @@
             align-items: center;
         }
 
+        .section-slide h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
         .section-experience {
             background-color: #fff;
         }
@@ -111,40 +118,29 @@
         .section-profile {
             background-color: #fff;
             min-height: 80vh;
-        }
-
-        .section-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: #2c3e50;
-            text-align: center;
-        }
-
-        .section-subtitle {
-            font-size: 1.3rem;
-            color: #7f8c8d;
-            margin-bottom: 3rem;
-            line-height: 1.6;
+            display: block !important;
+            align-items: center !important;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
         /* Sidebar Experience Styles */
         .experience-list {
             max-width: 900px;
             margin: 0 auto;
+            border-left: 3px solid #e74c3c;
         }
 
         .experience-item {
             position: relative;
-            padding: 1rem 0 1rem 3rem;
-            border-left: 3px solid #e74c3c;
+            padding: 1rem 0.5rem 1rem 3rem;
             margin-bottom: 1rem;
             transition: all 0.3s ease;
         }
 
         .experience-item:hover {
             border-left-color: #c0392b;
-            padding-left: 3.5rem;
+            padding: 1rem 0 1rem 3.5rem;
         }
 
         .experience-item::before {
@@ -188,9 +184,9 @@
 
         .experience-item p {
             color: #555;
+            font-size: 0.95rem;
             line-height: 1.7;
             margin-bottom: 0.4rem;
-            font-size: 0.95rem;
         }
 
         .experience-item p:last-child {
@@ -213,10 +209,6 @@
             padding-left: 0.5rem;
         }
 
-        .education-item :: before {
-            transition: all 0.3s ease;
-        }
-
         .education-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
@@ -224,9 +216,9 @@
         }
 
         .degree-line {
+            color: #2c3e50;
             font-size: 1.3rem;
             font-weight: 600;
-            color: #2c3e50;
             margin-bottom: 0.3rem;
         }
 
@@ -240,27 +232,16 @@
         }
 
         .awards-text {
-            font-size: 0.95rem;
             color: #7f8c8d;
-            line-height: 1.5;
+            font-size: 0.95rem;
             font-style: italic;
+            line-height: 1.5;
             margin-top: 0.5rem;
         }
 
         /* Profile Section Styles */
-        .profile-container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
 
-        .profile-image-container {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-
-        .profile-image {
+        .section-profile img {
             width: 280px;
             height: 280px;
             border-radius: 50%;
@@ -268,15 +249,17 @@
             border: 4px solid #e74c3c;
             transition: all 0.3s ease;
             box-shadow: 0 8px 32px rgba(231, 76, 60, 0.2);
+            margin-bottom: 2rem;
         }
 
-        .profile-image:hover {
+        .section-profile img:hover {
             border-color: #c0392b;
             transform: scale(1.05);
             box-shadow: 0 12px 48px rgba(231, 76, 60, 0.3);
         }
 
-        .profile-text {
+        .section-profile p {
+            flex: 1 !important;
             font-size: 1.1rem;
             color: #7f8c8d;
             line-height: 1.7;
@@ -352,7 +335,6 @@
             .hero {
                 padding: 0.5rem 0 !important;
                 margin-bottom: 0.75rem;
-                border-bottom: 2px solid #e74c3c;
             }
 
             .hero-body {
@@ -376,7 +358,7 @@
             }
 
             /* Section titles */
-            .section-title {
+            .section-slide h2 {
                 font-size: 14pt !important;
                 margin: 0.75rem 0 0.5rem 0 !important;
                 color: #2c3e50 !important;
@@ -392,7 +374,6 @@
             .experience-item {
                 padding: 0.3rem 0 0.3rem 0.75rem !important;
                 margin-bottom: 0.5rem !important;
-                border-left: 2px solid #e74c3c !important;
                 page-break-inside: avoid;
             }
 
@@ -437,12 +418,10 @@
             .education-item {
                 margin-bottom: 0.3rem !important;
                 padding-bottom: 0.3rem !important;
-                border-bottom: 1px solid #ddd !important;
                 page-break-inside: avoid;
             }
 
             .education-item:last-child {
-                border-bottom: none !important;
                 margin-bottom: 0 !important;
             }
 
@@ -466,44 +445,30 @@
             .section-profile {
                 min-height: auto !important;
                 padding: 0.25rem 0 !important;
-            }
-
-            .section-profile .section-title {
-                font-size: 10pt !important;
-                margin: 0.5rem 0 0.25rem 0 !important;
-            }
-
-            .profile-container {
-                display: block !important;
-                align-items: center !important;
-                text-align: center !important;
                 gap: 0.5rem !important;
                 max-width: none !important;
             }
 
-            .profile-image {
+            .section-profile h2 {
+                font-size: 10pt !important;
+                margin: 0.5rem 0 0.25rem 0 !important;
+            }
+
+            .section-profile img {
                 width: 40px !important;
                 height: 40px !important;
                 border: 1px solid #e74c3c !important;
                 box-shadow: none !important;
+                margin-bottom: 0.25rem !important;
             }
 
-            .profile-text {
-                flex: 1 !important;
-            }
-
-            .profile-text h3 {
-                font-size: 8pt !important;
-                margin-bottom: 0.1rem !important;
-                color: #2c3e50 !important;
-            }
-
-            .profile-text p {
+            .section-profile p {
                 font-size: 7pt !important;
                 margin-bottom: 0.1rem !important;
                 color: #666 !important;
                 line-height: 1.1 !important;
             }
+
             /* Page breaks */
             .section-experience {
                 page-break-after: avoid;
@@ -541,7 +506,7 @@
                 padding: 3rem 0;
             }
 
-            .section-title {
+            .section-slide h2 {
                 font-size: 2.5rem;
                 margin-bottom: 2rem;
             }
@@ -563,12 +528,12 @@
                 font-size: 0.9rem;
             }
 
-            .profile-image {
+            .section-profile img {
                 width: 220px;
                 height: 220px;
             }
 
-            .profile-text {
+            .section-profile p {
                 font-size: 1rem;
                 padding: 0 1rem;
             }
@@ -640,7 +605,7 @@
 
     <section id="experience" class="section-slide section-experience">
         <div class="container">
-            <h2 class="section-title">Experience</h2>
+            <h2>Experience</h2>
 
             <div class="experience-list">
                 <div class="experience-item">
@@ -681,7 +646,7 @@
 
     <section id="education" class="section-slide section-education">
         <div class="container">
-            <h2 class="section-title">Education</h2>
+            <h2>Education</h2>
 
             <div class="education-list">
                 <div class="education-item">
@@ -721,18 +686,12 @@
     </section>
 
     <section id="profile" class="section-slide section-profile">
-        <div class="container">
-            <h2 class="section-title">Profile</h2>
+        <div class="container has-text-centered">
+            <h2>Profile</h2>
 
-            <div class="profile-container">
-                <div class="profile-image-container">
-                    <img src="img/profile.jpg" alt="Vincent Quenneville-Bélair" class="profile-image">
-                </div>
+            <img src="img/profile.jpg" alt="Vincent Quenneville-Bélair">
 
-                <div class="profile-text">
-                    <p>Vincent Quenneville-Bélair, PhD, Applied Mathematician.</p>
-                </div>
-            </div>
+            <p>Vincent Quenneville-Bélair, PhD, Applied Mathematician.</p>
         </div>
     </section>
 
