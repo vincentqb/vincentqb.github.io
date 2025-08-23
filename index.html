@@ -1,312 +1,395 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YKX90BJMC"></script>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WhySimplicity</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        .hero {
+            background-color: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: transparent !important;
+            box-shadow: none;
+        }
+
+        .navbar-brand .navbar-item {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #000;
+        }
+
+        .navbar-brand .why {
+            color: #e74c3c;
+        }
+
+        .navbar-menu .navbar-item {
+            color: #666;
+            font-weight: 500;
+        }
+
+        .navbar-menu .navbar-item:hover {
+            color: #000;
+            background-color: transparent;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .main-title .why {
+            color: #e74c3c;
+            /*text-decoration: line-through;*/
+        }
+
+        .main-title .simplicity {
+            color: #2c3e50;
+        }
+
+        .subtitle-custom {
+            font-size: 1.5rem;
+            color: #666;
+            font-weight: 400;
+            margin-top: 2rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+
+            .subtitle-custom {
+                font-size: 1.2rem;
+            }
+        }
+
+        .hero-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 0;
+        }
+
+        .section-slide {
+            padding: 4rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-experience {
+            background-color: #fff;
+        }
+
+        .section-education {
+            background-color: #fafafa;
+        }
+
+        .section-clientes {
+            background-color: #fff;
+        }
+
+        .section-contato {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        .section-contato .section-title {
+            color: white;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .section-contato .section-subtitle {
+            color: #bdc3c7;
+        }
+
+        .experience-item, .education-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover, .education-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .experience-item h3, .education-item h3 {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .cliente-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .cliente-logo {
+            width: 120px;
+            height: 80px;
+            background: #e74c3c;
+            margin: 0 auto 1rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info h4 {
+            color: #e74c3c;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .navbar-menu .navbar-item {
+            cursor: pointer;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .social-icons {
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            color: #666;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #e74c3c;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-head">
+            <nav class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+                            <span class="why">Vincent</span>
+                        </a>
+
+                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+
+                    <div id="navbarMenu" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item" onclick="scrollToSection('experience')">Experience</a>
+                            <a class="navbar-item" onclick="scrollToSection('education')">Education</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="columns is-centered">
+                    <div class="column is-10">
+                        <h1 class="main-title">
+                            <span class="why">Vincent</span> <span class="simplicity">Quenneville-Bélair, PhD.</span>
+                        </h1>
+                        <p class="subtitle-custom">
+                            Applied Mathematician.
+                        </p>
+                        <div class="social-icons">
+                            <a href="mailto:vincentqb@gmail.com" title="Email">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://linkedin.com/vincentqb" target="_blank" title="LinkedIn">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/vincentqb" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=B3XqkfMAAAAJ" target="_blank" title="Scholar">
+                                <i class="fab fa-google-scholar"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="section-slide section-experience">
+        <div class="container">
+            <div class="has-text-centered">
+                <h2 class="section-title">Experience</h2>
+            </div>
+
+            <div class="columns">
+                <div class="column is-4">
+                    <div class="experience-item">
+                        <h3>Machine Learning Scientist</h3>
+                        <h4>Supply Chain Forecasting, Amazon</h4>
+                        <h5>2021-Now</h5>
+                        <p>Design deep learning attention-based models to forecast product demand for supply chain optimization.</p>
+                        <p>Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners.</p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="experience-item">
+                        <h3>Machine Learning Engineer</h3>
+                        <h4>PyTorch, Facebook AI</h4>
+                        <h5>2019-2021</h5>
+                        <p>Create torchaudio library, engaging over 200 open source contributors.</p>
+                        <p>Develop speech-to-text and text-to-speech deep learning models.</p>
+                        <p>Integrate novel PyTorch optimizers collaborating with academic and industrial researchers.</p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="experience-item">
+                        <h3>Machine Learning Scientist</h3>
+                        <h4>Supply Chain Forecasting and Marketing Measurement, Amazon</h4>
+                        <h5>2017-2019</h5>
+                        <p>Generate long-term strategic inventory capacity forecast. Model counterfactual scenarios. Optimize supply chain expansion recommendations.</p>
+                        <p>Build causal impact models to estimate advertising campaign lift. Infer future returns and optimize advertising portfolio.</p>
+                        <p>Teach internal machine learning specialization course series on matrix factorization, dimensionality reduction, and recommender systems.</p>
+                    </div>
+                </div>
+                <div class="column is-4">
+                    <div class="experience-item">
+                        <h3>Chief Data Scientist</h3>
+                        <h4>Vizanda</h4>
+                        <h4>Supply Chain Forecasting and Marketing Measurement, Amazon</h4>
+                        <h5>2017-2019</h5>
+                        <p>Develop web-based software to automatically extract information from structured and unstructured data on the fly. Process the information to programatically generate relevant visualizations and intelligent insights.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="section-slide section-education">
+        <div class="container">
+            <div class="has-text-centered">
+                <h2 class="section-title">Education</h2>
+            </div>
+
+            <div class="columns">
+                <div class="column is-6">
+                    <div class="education-item">
+                        <h3>PhD Applied Mathematics</h3>
+                        <h4>University of Minnesota</h4>
+                        <div class="tags has-addons" style="margin-top: 1rem;">
+                            <span class="tag">NSERC Alexander Graham Bell Canada Graduate Scholarship</span>
+                            <span class="tag">FQRNT Research Scholarship</span>
+                            <span class="tag">University of Minnesota Doctoral Dissertation Fellowship</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="education-item">
+                        <h3>MCS Computer Science</h3>
+                        <h4>University of Minnesota</h4>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="education-item">
+                        <h3>MSc Applied Mathematics</h3>
+                        <h4>University of Minnesota</h4>
+                    </div>
+                </div>
+                <div class="column is-6">
+                    <div class="education-item">
+                        <h3>BSc Mathematics and Physics</h3>
+                        <h4>McGill University</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-3YKX90BJMC");
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
     </script>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Vincent Quenneville-Belair, PhD" />
-    <meta name="author" content="Vincent Quenneville-Belair, PhD" />
-    <title>Vincent Quenneville-Belair, PhD</title>
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
 
-    <!-- Custom fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" />
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
 
-    <!-- Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+            // Close mobile menu when clicking on menu items
+            const navbarItems = document.querySelectorAll('.navbar-item[onclick]');
+            navbarItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const navbarBurger = document.querySelector('.navbar-burger');
+                    const navbarMenu = document.querySelector('.navbar-menu');
 
-    <!-- Custom styles -->
-    <link href="css/resume.css" rel="stylesheet" />
-  </head>
-
-  <body id="page-top">
-    <!-- Sidebar Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-      <a class="navbar-brand js-scroll-trigger" href="#page-top">
-        <span class="d-block d-lg-none">Vincent Quenneville-Bélair, PhD</span>
-        <span class="d-none d-lg-block">
-          <img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="img/profile.jpg" alt="profile photo" />
-        </span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#about">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#education">Education</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#hiking">Hiking</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Content -->
-    <div class="container-fluid p-0">
-      <!-- About -->
-      <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
-        <div class="w-100">
-          <h1 class="mb-0">Vincent <span class="text-primary">Quenneville-Bélair, PhD</span></h1>
-          <p class="subheading mb-5">Applied Mathematician</p>
-
-          <div class="social-icons">
-            <a href="mailto:vincentqb@gmail.com"><i class="fa fa-envelope"></i></a>
-            <div class="d-none d-print-inline">vincentqb@gmail.com<br /></div>
-
-            <a href="https://linkedin.com/in/vincentqb"><i class="fab fa-linkedin-in"></i></a>
-            <div class="d-none d-print-inline">linkedin.com/in/vincentqb<br /></div>
-
-            <a href="https://github.com/vincentqb"><i class="fab fa-github"></i></a>
-            <div class="d-none d-print-inline">github.com/vincentqb<br /></div>
-
-            <a href="https://scholar.google.com/citations?user=B3XqkfMAAAAJ"><i class="fa-brands fa-google-scholar"></i></a>
-            <div class="d-none d-print-inline">scholar.google.com/citations?user=B3XqkfMAAAAJ<br /></div>
-          </div>
-        </div>
-      </section>
-
-      <div class="d-print-none"><hr class="m-0" /></div>
-
-      <!-- Experience -->
-      <section class="resume-section p-3 p-lg-5 d-flex align-content-center" id="experience">
-        <div class="w-100">
-          <h2 class="mb-5">Experience</h2>
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="resume-content">
-              <h3 class="mb-0">Machine Learning Scientist</h3>
-              <div class="subheading mb-3">
-                Supply Chain Forecasting &mdash; Amazon
-              </div>
-              <ul class="fa-ul mb-0">
-                <li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Design deep learning attention-based models to forecast product demand for supply chain optimization.
-                  </p>
-                <li>
-                </li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners.
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2021 - Now</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="resume-content">
-              <h3 class="mb-0">Machine Learning Engineer</h3>
-              <div class="subheading mb-3">PyTorch &mdash; Facebook AI</div>
-              <ul class="fa-ul mb-0">
-                <li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Create torchaudio library, engaging over 200 open source contributors.
-                  </p>
-                </li>
-
-                <li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Develop speech-to-text and text-to-speech deep learning models.
-                  </p>
-                </li>
-                <li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Integrate novel PyTorch optimizers collaborating with academic and industrial researchers.
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2019 - 2021</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="resume-content">
-              <h3 class="mb-0">Machine Learning Scientist</h3>
-              <div class="subheading mb-3">
-                Supply Chain Forecasting and Marketing Measurement &mdash; Amazon
-              </div>
-              <ul class="fa-ul mb-0">
-                <li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Generate long-term strategic inventory capacity forecast. Model counterfactual scenarios. Optimize supply chain expansion recommendations.
-                  </p>
-                </li>
-                <li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Build causal impact models to estimate advertising campaign lift. Infer future returns and optimize advertising portfolio.
-                  </p>
-                </li>
-                <li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Teach internal machine learning specialization course series on matrix factorization, dimensionality reduction, and recommender systems.
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2017 - 2019</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="resume-content">
-              <h3 class="mb-0">
-                Chu Assistant Professor of Applied Mathematics
-              </h3>
-              <div class="subheading mb-3">Columbia University</div>
-              <ul class="fa-ul mb-0">
-                <li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Model gravitational wave propagation to understand black hole collisions. Create and analyze novel specialized mixed finite element methods to simulate these models numerically.
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2015 - 2017</span>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between">
-            <div class="resume-content">
-              <h3 class="mb-0">Chief Data Scientist</h3>
-              <div class="subheading mb-3">Vizanda</div>
-              <ul class="fa-ul mb-0">
-                <li>
-                  <i class="fa-li"></i>
-                  <p>
-                    Develop web-based software to automatically extract information from structured and unstructured data on the fly. Process the information to programatically generate relevant visualizations and intelligent insights.
-                  </p>
-                </li>
-              </ul>
-            </div>
-            <div class="resume-date text-md-right">
-              <span class="text-primary">2016 - 2017</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="d-print-none"><hr class="m-0" /></div>
-
-      <!-- Education -->
-      <section class="resume-section p-3 p-lg-5 d-flex align-items-center" id="education">
-        <div class="w-100">
-          <h2 class="mb-5">Education</h2>
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="resume-content">
-              <h3 class="mb-0">PhD Applied Mathematics</h3>
-              <div class="subheading mb-3">University of Minnesota</div>
-              <ul class="fa-ul mb-0">
-                <li>
-                  <i class="fa-li"></i>
-                  NSERC Alexander Graham Bell Canada Graduate Scholarship
-                </li>
-                <li>
-                  <i class="fa-li"></i>
-                  FQRNT Research Scholarship
-                </li>
-                <li>
-                  <i class="fa-li"></i>
-                  University of Minnesota Doctoral Dissertation Fellowship
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="resume-content">
-              <h3 class="mb-0">MCS Computer Science</h3>
-              <div class="subheading mb-3">University of Minnesota</div>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="resume-content">
-              <h3 class="mb-0">MSc Applied Mathematics</h3>
-              <div class="subheading mb-3">University of Minnesota</div>
-            </div>
-          </div>
-
-          <div class="resume-item d-flex flex-column flex-md-row justify-content-between mb-5">
-            <div class="resume-content">
-              <h3 class="mb-0">BSc Mathematics and Physics</h3>
-              <div class="subheading mb-3">McGill University</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="d-print-none"><hr class="m-0" /></div>
-
-      <!-- Hiking -->
-      <section class="resume-section p-3 p-lg-5 d-flex align-items-center d-print-none" id="hiking">
-        <div class="w-100">
-          <h2 class="mb-5">Hiking</h2>
-          <ul class="list-inline">
-            <li class="list-inline-item">
-              <a href="img/arches.jpg"><img src="img/arches-mini.jpg" class="img-thumbnail" style="width: 175px; height: 283px;" alt="Arches" /></a><br />
-              Arches
-            </li>
-            <li class="list-inline-item">
-              <a href="img/grand.jpg"><img src="img/grand-mini.jpg" class="img-thumbnail" style="width: 175px; height: 283px;" alt="Grand Teton" /></a><br />
-              Grand Teton
-            </li>
-            <li class="list-inline-item">
-              <a href="img/mansfield1.jpg"><img src="img/mansfield1-mini.jpg" class="img-thumbnail" style="width: 175px; height: 283px;" alt="Mount Mansfield" /></a><br />
-              Mount Mansfield
-            </li>
-            <li class="list-inline-item">
-              <a href="img/boundarywaters.jpg"><img src="img/boundarywaters-mini.jpg" class="img-thumbnail" style="width: 175px; height: 283px;" alt="Boundary Waters" /></a><br />
-              Boundary Waters
-            </li>
-          </ul>
-        </div>
-      </section>
-    </div>
-
-    <!-- Bootstrap 5 JS bundle (no jQuery needed) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Optional: keep your custom scripts -->
-    <script src="js/resume.js"></script>
-  </body>
+                    if (navbarBurger && navbarMenu) {
+                        navbarBurger.classList.remove('is-active');
+                        navbarMenu.classList.remove('is-active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
 </html>
