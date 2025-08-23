@@ -23,6 +23,10 @@
             color: #2c3e50;
         }
 
+        .navbar-brand .navbar-item:hover {
+            color: #e74c3c;
+        }
+
         .navbar-menu .navbar-item {
             color: #666;
             font-weight: 500;
@@ -40,6 +44,10 @@
             line-height: 1.1;
             margin-bottom: 1rem;
             color: #2c3e50;
+        }
+
+        .main-title .vincent {
+            color: #e74c3c;
         }
 
         .subtitle-custom {
@@ -118,9 +126,9 @@
 
         .experience-item {
             position: relative;
-            padding: 2rem 0 2rem 3rem;
+            padding: 1rem 0 1rem 3rem;
             border-left: 3px solid #e74c3c;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
             transition: all 0.3s ease;
         }
 
@@ -171,7 +179,7 @@
         .experience-item p {
             color: #555;
             line-height: 1.7;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.4rem;
             font-size: 0.95rem;
         }
 
@@ -179,68 +187,55 @@
             margin-bottom: 0;
         }
 
-        /* Education Sidebar Style */
+        /* Clean Text-Based Format */
         .education-list {
             max-width: 700px;
             margin: 0 auto;
         }
 
         .education-item {
-            position: relative;
-            padding: 1.8rem 0 1.8rem 3rem;
-            border-left: 3px solid #e74c3c;
-            margin-bottom: 2.5rem;
-            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+            padding-bottom: 2rem;
         }
 
-        .education-item:hover {
-            border-left-color: #c0392b;
-            padding-left: 3.5rem;
+        .education-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
-        .education-item::before {
-            content: '';
-            position: absolute;
-            left: -8px;
-            top: 1.8rem;
-            width: 13px;
-            height: 13px;
-            background-color: #e74c3c;
-            border-radius: 50%;
-            transition: all 0.3s ease;
-        }
-
-        .education-item:hover::before {
-            background-color: #c0392b;
-            transform: scale(1.2);
-        }
-
-        .education-item h3 {
-            color: #2c3e50;
+        .degree-line {
+            font-size: 1.3rem;
             font-weight: 600;
-            font-size: 1.4rem;
+            color: #2c3e50;
             margin-bottom: 0.3rem;
         }
 
-        .education-item h4 {
+        .degree-line .degree {
+            color: #2c3e50;
+        }
+
+        .degree-line .institution {
             color: #e74c3c;
             font-weight: 500;
-            font-size: 1.1rem;
-            margin-bottom: 1.2rem;
         }
 
-        .education-item .tags {
-            margin-top: 1rem;
+        .awards-text {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            line-height: 1.5;
+            font-style: italic;
+            margin-top: 0.5rem;
         }
 
-        .education-item .tag {
-            background-color: #f8f9fa;
-            color: #555;
-            border: 1px solid #e9ecef;
-            font-size: 0.8rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.4rem;
-            padding: 0.4rem 0.8rem;
+        @media screen and (max-width: 768px) {
+            .degree-line {
+                font-size: 1.1rem;
+            }
+
+            .awards-text {
+                font-size: 0.9rem;
+            }
         }
 
         /* Remove old timeline and card styles */
@@ -261,9 +256,6 @@
             <nav class="navbar">
                 <div class="container">
                     <div class="navbar-brand">
-                        <a class="navbar-item">
-                            Vincent Q-B
-                        </a>
 
                         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
                             <span aria-hidden="true"></span>
@@ -287,7 +279,7 @@
                 <div class="columns is-centered">
                     <div class="column is-10">
                         <h1 class="main-title">
-                            Vincent Quenneville-Bélair, PhD
+                            <span class="vincent">Vincent</span> Quenneville-Bélair, PhD
                         </h1>
                         <p class="subtitle-custom">
                             Applied Mathematician
@@ -315,7 +307,7 @@
     <section id="experience" class="section-slide section-experience">
         <div class="container">
             <div class="has-text-centered">
-                <h2 class="section-title">Professional Experience</h2>
+                <h2 class="section-title">Experience</h2>
             </div>
 
             <div class="experience-list">
@@ -363,28 +355,50 @@
 
             <div class="education-list">
                 <div class="education-item">
-                    <h3>PhD Applied Mathematics</h3>
-                    <h4>University of Minnesota</h4>
-                    <div class="tags">
-                        <span class="tag">NSERC Alexander Graham Bell Canada Graduate Scholarship</span>
-                        <span class="tag">FQRNT Research Scholarship</span>
-                        <span class="tag">University of Minnesota Doctoral Dissertation Fellowship</span>
+                    <div class="degree-line">
+                        <span class="degree">PhD Applied Mathematics</span>,
+                        <span class="institution">University of Minnesota</span>
+                    </div>
+                    <div class="awards">
+                        NSERC Alexander Graham Bell Canada Graduate Scholarship,
+                        FQRNT Research Scholarship,
+                        University of Minnesota Doctoral Dissertation Fellowship,
                     </div>
                 </div>
 
                 <div class="education-item">
-                    <h3>MCS Computer Science</h3>
-                    <h4>University of Minnesota</h4>
+                    <div class="degree-line">
+                        <span class="degree">MCS Computer Science</span>,
+                        <span class="institution">University of Minnesota</span>
+                    </div>
                 </div>
 
                 <div class="education-item">
-                    <h3>MSc Applied Mathematics</h3>
-                    <h4>University of Minnesota</h4>
+                    <div class="degree-line">
+                        <span class="degree">MSc Applied Mathematics</span>,
+                        <span class="institution">University of Minnesota</span>
+                    </div>
                 </div>
 
                 <div class="education-item">
-                    <h3>BSc Mathematics and Physics</h3>
-                    <h4>McGill University</h4>
+                    <div class="degree-line">
+                        <span class="degree">BSc Mathematics and Physics</span>,
+                        <span class="institution">McGill University</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="columns is-centered">
+                    <div class="column is-10">
+                        <h1 class="main-title">
+                            <span class="vincent">Vincent</span> Quenneville-Bélair, PhD
+                        </h1>
+                    </div>
                 </div>
             </div>
         </div>
