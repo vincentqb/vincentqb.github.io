@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WhySimplicity</title>
+    <title>Vincent Quenneville-Bélair, PhD</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         .hero {
-            background-color: #f5f5f5;
+            background-color: #f8f9fa;
             min-height: 100vh;
         }
 
@@ -20,51 +20,55 @@
         .navbar-brand .navbar-item {
             font-weight: bold;
             font-size: 1.2rem;
-            color: #000;
-        }
-
-        .navbar-brand .why {
-            color: #e74c3c;
+            color: #2c3e50;
         }
 
         .navbar-menu .navbar-item {
             color: #666;
             font-weight: 500;
+            cursor: pointer;
         }
 
         .navbar-menu .navbar-item:hover {
-            color: #000;
+            color: #e74c3c;
             background-color: transparent;
         }
 
         .main-title {
-            font-size: 4.5rem;
-            font-weight: 900;
+            font-size: 3.5rem;
+            font-weight: 700;
             line-height: 1.1;
             margin-bottom: 1rem;
-        }
-
-        .main-title .why {
-            color: #e74c3c;
-            text-decoration: line-through;
-        }
-
-        .main-title .simplicity {
             color: #2c3e50;
         }
 
         .subtitle-custom {
             font-size: 1.5rem;
-            color: #666;
+            color: #7f8c8d;
             font-weight: 400;
             margin-top: 2rem;
         }
 
+        .social-icons {
+            margin-top: 2rem;
+        }
+
+        .social-icons a {
+            color: #7f8c8d;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #e74c3c;
+            transform: translateY(-2px);
+        }
+
         @media screen and (max-width: 768px) {
             .main-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
-
             .subtitle-custom {
                 font-size: 1.2rem;
             }
@@ -84,21 +88,12 @@
             align-items: center;
         }
 
-        .section-expertise {
+        .section-experience {
             background-color: #fff;
         }
 
-        .section-produtos {
-            background-color: #fafafa;
-        }
-
-        .section-clientes {
-            background-color: #fff;
-        }
-
-        .section-contato {
-            background-color: #2c3e50;
-            color: white;
+        .section-education {
+            background-color: #f8f9fa;
         }
 
         .section-title {
@@ -108,98 +103,154 @@
             color: #2c3e50;
         }
 
-        .section-contato .section-title {
-            color: white;
-        }
-
         .section-subtitle {
             font-size: 1.3rem;
-            color: #666;
+            color: #7f8c8d;
             margin-bottom: 3rem;
             line-height: 1.6;
         }
 
-        .section-contato .section-subtitle {
-            color: #bdc3c7;
+        /* Sidebar Experience Styles */
+        .experience-list {
+            max-width: 900px;
+            margin: 0 auto;
         }
 
-        .expertise-item, .produto-item {
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
+        .experience-item {
+            position: relative;
+            padding: 2rem 0 2rem 3rem;
+            border-left: 3px solid #e74c3c;
+            margin-bottom: 3rem;
+            transition: all 0.3s ease;
         }
 
-        .expertise-item:hover, .produto-item:hover {
-            transform: translateY(-5px);
+        .experience-item:hover {
+            border-left-color: #c0392b;
+            padding-left: 3.5rem;
         }
 
-        .expertise-item h3, .produto-item h3 {
-            color: #e74c3c;
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 2rem;
+            width: 13px;
+            height: 13px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .experience-item:hover::before {
+            background-color: #c0392b;
+            transform: scale(1.2);
+        }
+
+        .experience-item h3 {
+            color: #2c3e50;
             font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
         }
 
-        .cliente-card {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .cliente-logo {
-            width: 120px;
-            height: 80px;
-            background: #e74c3c;
-            margin: 0 auto 1rem;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .contact-info {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-        }
-
-        .contact-info h4 {
+        .experience-item h4 {
             color: #e74c3c;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .experience-item h5 {
+            color: #95a5a6;
+            font-weight: 400;
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 1.2rem;
+        }
+
+        .experience-item p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .experience-item p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Education Sidebar Style */
+        .education-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .education-item {
+            position: relative;
+            padding: 1.8rem 0 1.8rem 3rem;
+            border-left: 3px solid #e74c3c;
+            margin-bottom: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover {
+            border-left-color: #c0392b;
+            padding-left: 3.5rem;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 1.8rem;
+            width: 13px;
+            height: 13px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .education-item:hover::before {
+            background-color: #c0392b;
+            transform: scale(1.2);
+        }
+
+        .education-item h3 {
+            color: #2c3e50;
             font-weight: 600;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
         }
 
-        .contact-info p {
-            margin-bottom: 0.5rem;
+        .education-item h4 {
+            color: #e74c3c;
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
         }
 
-        .navbar-menu .navbar-item {
-            cursor: pointer;
+        .education-item .tags {
+            margin-top: 1rem;
+        }
+
+        .education-item .tag {
+            background-color: #f8f9fa;
+            color: #555;
+            border: 1px solid #e9ecef;
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.4rem;
+            padding: 0.4rem 0.8rem;
+        }
+
+        /* Remove old timeline and card styles */
+        .timeline, .timeline::after, .timeline-item, .timeline-content,
+        .education-card, .education-grid {
+            display: none;
         }
 
         html {
             scroll-behavior: smooth;
-        }
-
-        .social-icons {
-            margin-top: 2rem;
-        }
-
-        .social-icons a {
-            color: #666;
-            font-size: 1.5rem;
-            margin: 0 1rem;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-icons a:hover {
-            color: #e74c3c;
-            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -211,7 +262,7 @@
                 <div class="container">
                     <div class="navbar-brand">
                         <a class="navbar-item">
-                            <span class="why">why</span>
+                            Vincent Q-B
                         </a>
 
                         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
@@ -223,10 +274,8 @@
 
                     <div id="navbarMenu" class="navbar-menu">
                         <div class="navbar-end">
-                            <a class="navbar-item" onclick="scrollToSection('expertise')">expertise</a>
-                            <a class="navbar-item" onclick="scrollToSection('produtos')">produtos</a>
-                            <a class="navbar-item" onclick="scrollToSection('clientes')">clientes</a>
-                            <a class="navbar-item" onclick="scrollToSection('contato')">contato</a>
+                            <a class="navbar-item" onclick="scrollToSection('experience')">Experience</a>
+                            <a class="navbar-item" onclick="scrollToSection('education')">Education</a>
                         </div>
                     </div>
                 </div>
@@ -238,17 +287,23 @@
                 <div class="columns is-centered">
                     <div class="column is-10">
                         <h1 class="main-title">
-                            <span class="why">why</span><span class="simplicity">simplicity.</span>
+                            Vincent Quenneville-Bélair, PhD
                         </h1>
                         <p class="subtitle-custom">
-                            soluções para negócios.
+                            Applied Mathematician
                         </p>
                         <div class="social-icons">
-                            <a href="mailto:contato@whysimplicity.com" title="Email">
+                            <a href="mailto:vincentqb@gmail.com" title="Email">
                                 <i class="fas fa-envelope"></i>
                             </a>
-                            <a href="https://linkedin.com/company/whysimplicity" target="_blank" title="LinkedIn">
+                            <a href="https://linkedin.com/in/vincentqb" target="_blank" title="LinkedIn">
                                 <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/vincentqb" target="_blank" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://scholar.google.com/citations?user=B3XqkfMAAAAJ" target="_blank" title="Google Scholar">
+                                <i class="fas fa-graduation-cap"></i>
                             </a>
                         </div>
                     </div>
@@ -257,155 +312,79 @@
         </div>
     </section>
 
-    <!-- Expertise Section -->
-    <section id="expertise" class="section-slide section-expertise">
+    <section id="experience" class="section-slide section-experience">
         <div class="container">
             <div class="has-text-centered">
-                <h2 class="section-title">Nossa Expertise</h2>
-                <p class="section-subtitle">Combinamos conhecimento técnico com visão estratégica para entregar soluções que realmente fazem a diferença.</p>
+                <h2 class="section-title">Professional Experience</h2>
             </div>
 
-            <div class="columns">
-                <div class="column is-4">
-                    <div class="expertise-item">
-                        <h3>Desenvolvimento de Software</h3>
-                        <p>Criamos aplicações robustas e escaláveis utilizando as melhores práticas e tecnologias modernas do mercado.</p>
-                    </div>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <h3>Machine Learning Scientist</h3>
+                    <h4>Supply Chain Forecasting, Amazon</h4>
+                    <h5>2021 - Present</h5>
+                    <p>Design deep learning attention-based models to forecast product demand for supply chain optimization.</p>
+                    <p>Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners.</p>
                 </div>
-                <div class="column is-4">
-                    <div class="expertise-item">
-                        <h3>Consultoria Digital</h3>
-                        <p>Orientamos empresas na transformação digital, otimizando processos e maximizando resultados.</p>
-                    </div>
+
+                <div class="experience-item">
+                    <h3>Machine Learning Engineer</h3>
+                    <h4>PyTorch, Facebook AI</h4>
+                    <h5>2019 - 2021</h5>
+                    <p>Create torchaudio library, engaging over 200 open source contributors.</p>
+                    <p>Develop speech-to-text and text-to-speech deep learning models.</p>
+                    <p>Integrate novel PyTorch optimizers collaborating with academic and industrial researchers.</p>
                 </div>
-                <div class="column is-4">
-                    <div class="expertise-item">
-                        <h3>Arquitetura de Sistemas</h3>
-                        <p>Projetamos infraestruturas tecnológicas eficientes e seguras para suportar o crescimento do seu negócio.</p>
-                    </div>
+
+                <div class="experience-item">
+                    <h3>Machine Learning Scientist</h3>
+                    <h4>Supply Chain Forecasting and Marketing Measurement, Amazon</h4>
+                    <h5>2017 - 2019</h5>
+                    <p>Generate long-term strategic inventory capacity forecast. Model counterfactual scenarios. Optimize supply chain expansion recommendations.</p>
+                    <p>Build causal impact models to estimate advertising campaign lift. Infer future returns and optimize advertising portfolio.</p>
+                    <p>Teach internal machine learning specialization course series on matrix factorization, dimensionality reduction, and recommender systems.</p>
+                </div>
+
+                <div class="experience-item">
+                    <h3>Chief Data Scientist</h3>
+                    <h4>Vizanda</h4>
+                    <h5>2017 - 2019</h5>
+                    <p>Develop web-based software to automatically extract information from structured and unstructured data on the fly. Process the information to programmatically generate relevant visualizations and intelligent insights.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Produtos Section -->
-    <section id="produtos" class="section-slide section-produtos">
+    <section id="education" class="section-slide section-education">
         <div class="container">
             <div class="has-text-centered">
-                <h2 class="section-title">Nossos Produtos</h2>
-                <p class="section-subtitle">Soluções inovadoras desenvolvidas para simplificar e potencializar o seu negócio.</p>
+                <h2 class="section-title">Education</h2>
             </div>
 
-            <div class="columns">
-                <div class="column is-6">
-                    <div class="produto-item">
-                        <h3>SimplyERP</h3>
-                        <p>Sistema integrado de gestão empresarial que unifica todos os processos da sua empresa em uma única plataforma intuitiva e poderosa.</p>
-                        <div class="tags has-addons" style="margin-top: 1rem;">
-                            <span class="tag">Gestão</span>
-                            <span class="tag">Automação</span>
-                            <span class="tag">Relatórios</span>
-                        </div>
+            <div class="education-list">
+                <div class="education-item">
+                    <h3>PhD Applied Mathematics</h3>
+                    <h4>University of Minnesota</h4>
+                    <div class="tags">
+                        <span class="tag">NSERC Alexander Graham Bell Canada Graduate Scholarship</span>
+                        <span class="tag">FQRNT Research Scholarship</span>
+                        <span class="tag">University of Minnesota Doctoral Dissertation Fellowship</span>
                     </div>
                 </div>
-                <div class="column is-6">
-                    <div class="produto-item">
-                        <h3>SimplyCRM</h3>
-                        <p>Plataforma completa de relacionamento com clientes que transforma leads em vendas e clientes em defensores da sua marca.</p>
-                        <div class="tags has-addons" style="margin-top: 1rem;">
-                            <span class="tag">CRM</span>
-                            <span class="tag">Vendas</span>
-                            <span class="tag">Analytics</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Clientes Section -->
-    <section id="clientes" class="section-slide section-clientes">
-        <div class="container">
-            <div class="has-text-centered">
-                <h2 class="section-title">Nossos Clientes</h2>
-                <p class="section-subtitle">Empresas que confiaram na nossa expertise para transformar seus negócios através da simplicidade e inovação.</p>
-            </div>
+                <div class="education-item">
+                    <h3>MCS Computer Science</h3>
+                    <h4>University of Minnesota</h4>
+                </div>
 
-            <div class="columns">
-                <div class="column is-3">
-                    <div class="cliente-card">
-                        <div class="cliente-logo">TechCorp</div>
-                        <p><strong>TechCorp Solutions</strong></p>
-                        <p class="has-text-grey">Tecnologia</p>
-                    </div>
+                <div class="education-item">
+                    <h3>MSc Applied Mathematics</h3>
+                    <h4>University of Minnesota</h4>
                 </div>
-                <div class="column is-3">
-                    <div class="cliente-card">
-                        <div class="cliente-logo">InnovateBiz</div>
-                        <p><strong>Innovate Business</strong></p>
-                        <p class="has-text-grey">Consultoria</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="cliente-card">
-                        <div class="cliente-logo">GreenTech</div>
-                        <p><strong>GreenTech Energia</strong></p>
-                        <p class="has-text-grey">Energia Renovável</p>
-                    </div>
-                </div>
-                <div class="column is-3">
-                    <div class="cliente-card">
-                        <div class="cliente-logo">DataFlow</div>
-                        <p><strong>DataFlow Analytics</strong></p>
-                        <p class="has-text-grey">Big Data</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contato Section -->
-    <section id="contato" class="section-slide section-contato">
-        <div class="container">
-            <div class="has-text-centered">
-                <h2 class="section-title">Fale Conosco</h2>
-                <p class="section-subtitle">Pronto para simplificar seu negócio? Entre em contato e vamos conversar sobre como podemos ajudar.</p>
-            </div>
-
-            <div class="columns">
-                <div class="column is-6">
-                    <div class="contact-info">
-                        <h4>Informações de Contato</h4>
-                        <p><strong>Email:</strong> contato@whysimplicity.com</p>
-                        <p><strong>Telefone:</strong> +55 (11) 9999-9999</p>
-                        <p><strong>Endereço:</strong> São Paulo, SP</p>
-                    </div>
-
-                    <div class="contact-info">
-                        <h4>Horários de Atendimento</h4>
-                        <p><strong>Segunda a Sexta:</strong> 9h às 18h</p>
-                        <p><strong>Sábado:</strong> 9h às 12h</p>
-                        <p><strong>Domingo:</strong> Fechado</p>
-                    </div>
-                </div>
-                <div class="column is-6">
-                    <div class="contact-info">
-                        <h4>Envie uma Mensagem</h4>
-                        <form>
-                            <div class="field">
-                                <input class="input" type="text" placeholder="Seu nome" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
-                            </div>
-                            <div class="field">
-                                <input class="input" type="email" placeholder="Seu email" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white;">
-                            </div>
-                            <div class="field">
-                                <textarea class="textarea" placeholder="Sua mensagem" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; min-height: 100px;"></textarea>
-                            </div>
-                            <div class="field">
-                                <button class="button is-danger is-fullwidth" type="submit">Enviar Mensagem</button>
-                            </div>
-                        </form>
-                    </div>
+                <div class="education-item">
+                    <h3>BSc Mathematics and Physics</h3>
+                    <h4>McGill University</h4>
                 </div>
             </div>
         </div>
@@ -419,7 +398,6 @@
             });
         }
 
-    <script>
         // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', () => {
             const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
