@@ -1,184 +1,136 @@
-/*!
- * Start Bootstrap - Vincent Quenneville-Belair v5.0.8 (https://startbootstrap.com/template-overviews/resume)
- * Copyright 2013-2019 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/vincentqb-resume/blob/master/LICENSE)
- */
+/* Vincent Quenneville-Belair Resume Template (modernized) */
+
+:root {
+  --primary: #002d62;
+  --text: #444;
+  --text-muted: #777;
+  --bg-dark: #495057;
+}
 
 body {
-  font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
-  padding-top: 54px;
-  color: #868e96;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  padding-top: 3.5rem;
+  line-height: 1.6;
 }
 
 @media (min-width: 992px) {
   body {
     padding-top: 0;
-    padding-left: 17rem;
+    padding-left: 16rem;
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Saira Extra Condensed", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  color: #343a40;
+  color: #222;
+  margin-bottom: 0.5rem;
 }
 
-h1 {
-  font-size: 6rem;
-  line-height: 5.5rem;
-}
-
-h2 {
-  font-size: 3.5rem;
-}
-
-h3 {
-  font-size: 2rem;
-}
+h1 { font-size: 5rem; line-height: 1.1; }
+h2 { font-size: 3rem; }
+h3 { font-size: 1.75rem; }
 
 p.lead {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 400;
+  color: var(--text-muted);
 }
 
 .subheading {
   text-transform: uppercase;
   font-weight: 500;
-  font-family: "Saira Extra Condensed", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  color: var(--primary);
 }
 
-.social-icons a {
-  display: inline-block;
-  height: 3.5rem;
-  width: 3.5rem;
-  background-color: #495057;
-  color: #fff !important;
-  border-radius: 100%;
+/* Sidebar Navigation */
+#sideNav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16rem;
+  height: 100vh;
+  background: white;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  font-size: 1.5rem;
-  line-height: 3.5rem;
-  margin-right: 1rem;
+  border-right: 1px solid #eee;
 }
 
-.social-icons a:last-child {
-  margin-right: 0;
+#sideNav .navbar-brand {
+  margin: 1rem auto;
+}
+#sideNav .img-profile {
+  max-width: 9rem;
+  border-radius: 50%;
+  border: 0.4rem solid rgba(0,0,0,0.05);
 }
 
-.social-icons a:hover {
-  background-color: #002d62;
+#sideNav .navbar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 0;
 }
 
-.dev-icons {
-  font-size: 3rem;
-}
-
-.dev-icons .list-inline-item i:hover {
-  color: #002d62;
-}
-
-#sideNav .navbar-nav .nav-item .nav-link {
-  font-weight: 800;
-  letter-spacing: 0.05rem;
+#sideNav .nav-link {
+  font-weight: 700;
   text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05rem;
+  color: var(--text);
+  transition: color 0.2s;
+}
+#sideNav .nav-link:hover {
+  color: var(--primary);
 }
 
-#sideNav .navbar-toggler:focus {
-  outline-color: #0050af;
-}
-
-@media (min-width: 992px) {
-  #sideNav {
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    width: 17rem;
-    height: 100vh;
-  }
-  #sideNav .navbar-brand {
-    display: flex;
-    margin: auto auto 0;
-    padding: 0.5rem;
-  }
-  #sideNav .navbar-brand .img-profile {
-    max-width: 10rem;
-    max-height: 10rem;
-    border: 0.5rem solid rgba(255, 255, 255, 0.2);
-  }
-  #sideNav .navbar-collapse {
-    display: flex;
-    align-items: flex-start;
-    flex-grow: 0;
-    width: 100%;
-    margin-bottom: auto;
-  }
-  #sideNav .navbar-collapse .navbar-nav {
-    flex-direction: column;
-    width: 100%;
-  }
-  #sideNav .navbar-collapse .navbar-nav .nav-item {
-    display: block;
-  }
-  #sideNav .navbar-collapse .navbar-nav .nav-item .nav-link {
-    display: block;
-  }
-}
-
+/* Sections */
 section.resume-section {
-  padding-top: 5rem !important;
-  padding-bottom: 5rem !important;
-  max-width: 75rem;
+  padding: 4rem 2rem;
+  max-width: 70rem;
 }
-
-section.resume-section .resume-item .resume-date {
-  min-width: none;
-}
-
 @media (min-width: 768px) {
-  section.resume-section {
-    min-height: 100vh;
-  }
-  section.resume-section .resume-item .resume-date {
-    min-width: 18rem;
-  }
+  section.resume-section { min-height: 100vh; }
 }
-
 @media (min-width: 992px) {
-  section.resume-section {
-    padding-top: 3rem !important;
-    padding-bottom: 3rem !important;
-  }
+  section.resume-section { padding: 3rem; }
 }
 
-.bg-primary {
-  background-color: #002d62 !important;
+/* Social Icons */
+.social-icons {
+  margin-top: 1.5rem;
+}
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  background: var(--bg-dark);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 1.25rem;
+  margin-right: 0.5rem;
+  transition: background 0.3s;
+}
+.social-icons a:hover {
+  background: var(--primary);
 }
 
-.text-primary {
-  color: #002d62 !important;
+/* Dev Icons */
+.dev-icons {
+  font-size: 2.5rem;
+}
+.dev-icons i:hover {
+  color: var(--primary);
 }
 
-a {
-  color: #002d62;
-}
+/* Utilities */
+.bg-primary { background: var(--primary) !important; }
+.text-primary { color: var(--primary) !i
 
-a:hover,
-a:focus,
-a:active {
-  color: #000a16;
-}
