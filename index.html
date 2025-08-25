@@ -36,6 +36,7 @@
         .navbar {
             background-color: transparent !important;
             box-shadow: none;
+            position: relative;
         }
 
         .navbar-brand .navbar-item {
@@ -58,6 +59,34 @@
         .navbar-menu .navbar-item:hover {
             color: var(--imperial-red);
             background-color: transparent;
+        }
+
+        /* Mobile menu overlay fix */
+        @media screen and (max-width: 1023px) {
+            .navbar-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: var(--white-smoke);
+                box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
+                padding: 0.5rem 0;
+                transform: translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 1000;
+            }
+
+            .navbar-menu.is-active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            .navbar-menu .navbar-item {
+                padding: 0.75rem 1.5rem;
+            }
         }
 
         .main-title {
