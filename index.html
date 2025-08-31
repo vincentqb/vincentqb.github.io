@@ -781,7 +781,6 @@
             const returnToTopBtn = document.querySelector('.return-to-top');
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            // Show/hide return to top button
             if (scrollTop > 300) {
                 returnToTopBtn.classList.add('show');
             } else {
@@ -789,12 +788,12 @@
             }
         }
 
-        // Mobile menu toggle
         document.addEventListener('DOMContentLoaded', () => {
             window.addEventListener('scroll', handleScroll);
 
             const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
 
+            // Mobile menu toggle
             if ($navbarBurgers.length > 0) {
                 $navbarBurgers.forEach(el => {
                     el.addEventListener('click', () => {
