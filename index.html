@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
+    <!-- Google tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YKX90BJMC"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -16,9 +16,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
+        /* ========================================
+           BASE STYLES
+        ======================================== */
         html {
             scroll-behavior: smooth;
         }
+
         :root {
             --white: hsla(0, 0%, 100%, 1);
             --white-smoke: hsla(0, 0%, 95%, 1);
@@ -28,11 +32,9 @@
             --mild-imperial-red: hsla(0, 65%, 54%, 1);
         }
 
-        .hero {
-            background-color: var(--white-smoke);
-            min-height: 100vh;
-        }
-
+        /* ========================================
+           NAVIGATION
+        ======================================== */
         .navbar {
             background-color: transparent !important;
             box-shadow: none;
@@ -62,7 +64,6 @@
             background-color: transparent;
         }
 
-        /* Mobile menu overlay fix */
         @media screen and (max-width: 1023px) {
             .navbar-menu {
                 position: absolute;
@@ -88,6 +89,21 @@
             .navbar-menu .navbar-item {
                 padding: 0.75rem 1.5rem;
             }
+        }
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+        .hero {
+            background-color: var(--white-smoke);
+            min-height: 100vh;
+        }
+
+        .hero-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 0;
         }
 
         .main-title {
@@ -124,13 +140,9 @@
             color: var(--imperial-red);
         }
 
-        .hero-body {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 0;
-        }
-
+        /* ========================================
+           SECTION LAYOUTS
+        ======================================== */
         .section-slide {
             padding: 4rem 0.5rem;
             min-height: 100vh;
@@ -164,7 +176,9 @@
             margin: 0 auto;
         }
 
-        /* Sidebar Experience Styles */
+        /* ========================================
+           EXPERIENCE SECTION
+        ======================================== */
         .experience-list {
             max-width: 900px;
             margin: 0 auto;
@@ -234,7 +248,9 @@
             margin-bottom: 0;
         }
 
-        /* Clean Text-Based Format */
+        /* ========================================
+           EDUCATION SECTION
+        ======================================== */
         .education-list {
             max-width: 700px;
             margin: 0 auto;
@@ -279,8 +295,9 @@
             margin-top: 0.5rem;
         }
 
-        /* Profile Section Styles */
-
+        /* ========================================
+           PROFILE SECTION
+        ======================================== */
         .section-profile img {
             width: 280px;
             height: 280px;
@@ -307,7 +324,9 @@
             margin: 0 auto;
         }
 
-        /* Return to Top Button */
+        /* ========================================
+           UI COMPONENTS
+        ======================================== */
         .return-to-top {
             position: fixed;
             bottom: 2rem;
@@ -340,215 +359,9 @@
             box-shadow: 0 6px 20px var(--imperial-red);
         }
 
-        /* Print Styles - Ultra Compact */
-        @media print {
-            * {
-                -webkit-print-color-adjust: exact !important;
-                color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-
-            body {
-                font-size: 10pt;
-                line-height: 1.3;
-                color: var(--black);
-                background: var(--white);
-                margin: 0;
-                padding: 0;
-            }
-
-            /* Hide elements not needed in print */
-            .navbar,
-            .return-to-top,
-            .social-icons {
-                display: none !important;
-            }
-
-            /* Show social icons but make them print-friendly */
-            .social-icons {
-                margin-top: 0.5rem !important;
-                font-size: 10pt !important;
-                display: flex !important;
-                justify-content: center !important;
-                flex-wrap: wrap !important;
-                gap: 1rem !important;
-            }
-
-            .social-icons a {
-                color: black !important;
-                margin: 0 !important;
-                text-decoration: none !important;
-                display: inline-flex !important;
-                align-items: center !important;
-                gap: 0.25rem !important;
-            }
-
-            .social-icons a::after {
-                content: attr(href) !important;
-                font-size: 8pt !important;
-                color: var(--black) !important;
-            }
-
-            /* This is a workaround since CSS can't directly manipulate attr() content */
-            .social-icons a[title="Email"]::after {
-                content: "vincentqb@gmail.com" !important;
-                font-size: 8pt !important;
-                color: var(--black) !important;
-            }
-
-            /* Compress sections significantly */
-            .hero,
-            .section-slide {
-                min-height: auto !important;
-                padding: 0.25rem 0 !important;
-                page-break-inside: avoid;
-            }
-
-            .hero {
-                padding: 0.5rem 0 !important;
-                margin-bottom: 0.75rem;
-            }
-
-            .hero-body {
-                padding: 0 !important;
-            }
-
-            .main-title {
-                font-size: 20pt !important;
-                margin-bottom: 0.15rem !important;
-                color: var(--black) !important;
-            }
-
-            .subtitle-custom {
-                font-size: 12pt !important;
-                margin-top: 0.15rem !important;
-            }
-
-            /* Section titles */
-            .section-slide h2 {
-                font-size: 14pt !important;
-                margin: 0.75rem 0 0.5rem 0 !important;
-                color: var(--black) !important;
-                border-bottom: 1px solid var(--silver);
-                padding-bottom: 0.15rem;
-            }
-
-            /* Experience section - very compact timeline */
-            .experience-list {
-                margin: 0 !important;
-            }
-
-            .experience-item {
-                padding: 0.3rem 0 0.3rem 0.75rem !important;
-                margin-bottom: 0.5rem !important;
-                page-break-inside: avoid;
-            }
-
-            .experience-item::before {
-                width: 6px !important;
-                height: 6px !important;
-                left: -4px !important;
-                top: 0.5rem !important;
-            }
-
-            .experience-item h3 {
-                font-size: 11pt !important;
-                margin-bottom: 0.05rem !important;
-            }
-
-            .experience-item h4 {
-                font-size: 10pt !important;
-                margin-bottom: 0.05rem !important;
-            }
-
-            .experience-item h5 {
-                font-size: 8pt !important;
-                margin-bottom: 0.3rem !important;
-            }
-
-            .experience-item p {
-                font-size: 9pt !important;
-                margin-bottom: 0.15rem !important;
-                line-height: 1.2 !important;
-            }
-
-            /* Education section - very compact */
-            .education-list {
-                margin: 0 !important;
-            }
-
-            .education-item {
-                margin-bottom: 0.3rem !important;
-                padding-bottom: 0.3rem !important;
-                page-break-inside: avoid;
-            }
-
-            .education-item:last-child {
-                margin-bottom: 0 !important;
-            }
-
-            .degree-line {
-                font-size: 10pt !important;
-                margin-bottom: 0.1rem !important;
-            }
-
-            .awards-text {
-                color: var(--silver) !important;
-                font-size: 8pt !important;
-                line-height: 1.2 !important;
-            }
-
-            /* profile section - very small */
-            .section-profile {
-                min-height: auto !important;
-                padding: 0.25rem 0 !important;
-                gap: 0.5rem !important;
-                max-width: none !important;
-            }
-
-            .section-profile h2 {
-                font-size: 10pt !important;
-                margin: 0.5rem 0 0.25rem 0 !important;
-            }
-
-            .section-profile img {
-                width: 40px !important;
-                height: 40px !important;
-                border: 1px solid var(--silver) !important;
-                box-shadow: none !important;
-                margin-bottom: 0.25rem !important;
-            }
-
-            .section-profile p {
-                line-height: 1.1 !important;
-                font-size: 7pt !important;
-                margin-bottom: 0.1rem !important;
-            }
-
-            /* Page breaks */
-            .section-experience {
-                page-break-after: avoid;
-            }
-
-            .section-education {
-                page-break-before: avoid;
-            }
-
-            /* Ensure good page utilization */
-            @page {
-                margin: 0.5in;
-                size: letter;
-            }
-
-            /* Prevent widows and orphans */
-            .experience-item,
-            .education-item {
-                orphans: 2;
-                widows: 2;
-            }
-        }
-
-        /* Mobile Responsive */
+        /* ========================================
+           MOBILE RESPONSIVE
+        ======================================== */
         @media screen and (max-width: 768px) {
             .main-title {
                 font-size: 2.5rem;
@@ -587,6 +400,203 @@
                 width: 45px;
                 height: 45px;
                 font-size: 1.1rem;
+            }
+        }
+
+        /* ========================================
+           PRINT STYLES
+        ======================================== */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            @page {
+                margin: 0.5in;
+                size: letter;
+            }
+
+            body {
+                font-size: 10pt;
+                line-height: 1.3;
+                color: var(--black);
+                background: var(--white) !important;
+                margin: 0;
+                padding: 0;
+            }
+
+            .navbar,
+            .return-to-top {
+                display: none !important;
+            }
+
+            .social-icons {
+                margin-top: 0.5rem !important;
+                font-size: 10pt !important;
+                display: flex !important;
+                justify-content: center !important;
+                flex-wrap: wrap !important;
+                gap: 1rem !important;
+            }
+
+            .social-icons a {
+                color: black !important;
+                margin: 0 !important;
+                text-decoration: none !important;
+                display: inline-flex !important;
+                align-items: center !important;
+                gap: 0.25rem !important;
+            }
+
+            .social-icons a::after {
+                content: attr(href) !important;
+                font-size: 8pt !important;
+                color: var(--black) !important;
+            }
+
+            .social-icons a[title="Email"]::after {
+                content: "vincentqb@gmail.com" !important;
+                font-size: 8pt !important;
+                color: var(--black) !important;
+            }
+
+            .hero,
+            .section-slide {
+                min-height: auto !important;
+                padding: 0.25rem 0 !important;
+                page-break-inside: avoid;
+                background: var(--white) !important;
+            }
+
+            .hero {
+                padding: 0.5rem 0 !important;
+                margin-bottom: 0.75rem;
+            }
+
+            .hero-body {
+                padding: 0 !important;
+            }
+
+            .main-title {
+                font-size: 20pt !important;
+                margin-bottom: 0.15rem !important;
+                color: var(--black) !important;
+            }
+
+            .subtitle-custom {
+                font-size: 12pt !important;
+                margin-top: 0.15rem !important;
+            }
+
+            .section-slide h2 {
+                font-size: 14pt !important;
+                margin: 0.75rem 0 0.5rem 0 !important;
+                color: var(--black) !important;
+                border-bottom: 1px solid var(--silver);
+                padding-bottom: 0.15rem;
+            }
+
+            .experience-list {
+                margin: 0 !important;
+            }
+
+            .experience-item {
+                padding: 0.3rem 0 0.3rem 0.75rem !important;
+                margin-bottom: 0.5rem !important;
+                page-break-inside: avoid;
+                orphans: 2;
+                widows: 2;
+            }
+
+            .experience-item::before {
+                width: 6px !important;
+                height: 6px !important;
+                left: -4px !important;
+                top: 0.5rem !important;
+            }
+
+            .experience-item h3 {
+                font-size: 11pt !important;
+                margin-bottom: 0.05rem !important;
+            }
+
+            .experience-item h4 {
+                font-size: 10pt !important;
+                margin-bottom: 0.05rem !important;
+            }
+
+            .experience-item h5 {
+                font-size: 8pt !important;
+                margin-bottom: 0.3rem !important;
+            }
+
+            .experience-item p {
+                font-size: 9pt !important;
+                margin-bottom: 0.15rem !important;
+                line-height: 1.2 !important;
+            }
+
+            .education-list {
+                margin: 0 !important;
+            }
+
+            .education-item {
+                margin-bottom: 0.3rem !important;
+                padding-bottom: 0.3rem !important;
+                page-break-inside: avoid;
+                orphans: 2;
+                widows: 2;
+            }
+
+            .education-item:last-child {
+                margin-bottom: 0 !important;
+            }
+
+            .degree-line {
+                font-size: 10pt !important;
+                margin-bottom: 0.1rem !important;
+            }
+
+            .awards-text {
+                color: var(--silver) !important;
+                font-size: 8pt !important;
+                line-height: 1.2 !important;
+            }
+
+            .section-profile {
+                min-height: auto !important;
+                padding: 0.25rem 0 !important;
+                gap: 0.5rem !important;
+                max-width: none !important;
+            }
+
+            .section-profile h2 {
+                font-size: 10pt !important;
+                margin: 0.5rem 0 0.25rem 0 !important;
+            }
+
+            .section-profile img {
+                width: 40px !important;
+                height: 40px !important;
+                border: 1px solid var(--silver) !important;
+                box-shadow: none !important;
+                margin-bottom: 0.25rem !important;
+            }
+
+            .section-profile p {
+                line-height: 1.1 !important;
+                font-size: 7pt !important;
+                margin-bottom: 0.1rem !important;
+            }
+
+            .section-experience {
+                page-break-after: avoid;
+            }
+
+            .section-education {
+                page-break-before: avoid;
             }
         }
     </style>
