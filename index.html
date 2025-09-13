@@ -19,17 +19,13 @@
         /* ========================================
            CSS VARIABLES & BASE STYLES
         ======================================== */
-        html {
-            scroll-behavior: smooth;
-        }
-
         :root {
-            --white: hsla(0, 0%, 100%, 1);
-            --white-smoke: hsla(0, 0%, 98%, 1);
-            --black: hsla(0, 100%, 0%, 1);
-            --silver: hsla(0, 0%, 70%, 1);
             --imperial-red: hsla(0, 85%, 54%, 1);
             --mild-imperial-red: hsla(0, 65%, 54%, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         /* ========================================
@@ -42,9 +38,9 @@
         }
 
         .navbar-brand .navbar-item {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: var(--silver);
+            font-weight: var(--bulma-weight-bold);
+            font-size: var(--bulma-size-5);
+            color: var(--bulma-grey);
         }
 
         .navbar-brand .navbar-item:hover {
@@ -52,8 +48,8 @@
         }
 
         .navbar-menu .navbar-item {
-            color: var(--silver);
-            font-weight: 500;
+            color: var(--bulma-grey);
+            font-weight: var(--bulma-weight-medium);
             font-variant: small-caps;
             cursor: pointer;
             background-color: transparent;
@@ -70,9 +66,9 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background-color: var(--white-smoke);
-                box-shadow: 0 8px 16px rgba(10, 10, 10, 0.1);
-                padding: 0.5rem 0;
+                background-color: var(--bulma-white-bis);
+                box-shadow: var(--bulma-shadow);
+                padding: var(--bulma-size-6) 0;
                 transform: translateY(-10px);
                 opacity: 0;
                 visibility: hidden;
@@ -87,7 +83,7 @@
             }
 
             .navbar-menu .navbar-item {
-                padding: 0.75rem 1.5rem;
+                padding: var(--bulma-size-6) var(--bulma-size-4);
             }
         }
 
@@ -95,7 +91,7 @@
            HERO SECTION
         ======================================== */
         .hero {
-            background-color: var(--white-smoke);
+            background-color: var(--bulma-white-bis);
             min-height: 100vh;
         }
 
@@ -107,12 +103,12 @@
         }
 
         .main-title {
-            color: var(--black);
-            font-size: 3.5rem;
-            font-weight: 700;
+            color: var(--bulma-black);
+            font-size: var(--bulma-size-1);
+            font-weight: var(--bulma-weight-bold);
             font-variant: small-caps;
             line-height: 1.1;
-            margin-bottom: 1rem;
+            margin-bottom: var(--bulma-size-5);
         }
 
         .main-title .accent {
@@ -120,20 +116,20 @@
         }
 
         .subtitle-custom {
-            color: var(--black);
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-top: 2rem;
+            color: var(--bulma-black);
+            font-size: var(--bulma-size-4);
+            font-weight: var(--bulma-weight-normal);
+            margin-top: var(--bulma-size-3);
         }
 
         .social-icons {
-            margin-top: 2rem;
-            font-size: 1.5rem;
+            margin-top: var(--bulma-size-3);
+            font-size: var(--bulma-size-4);
         }
 
         .social-icons a {
-            color: var(--black);
-            margin: 0 1rem;
+            color: var(--bulma-black);
+            margin: 0 var(--bulma-size-5);
         }
 
         .social-icons a:hover {
@@ -144,31 +140,31 @@
            SECTION LAYOUTS
         ======================================== */
         .section-slide {
-            padding: 4rem 0.5rem;
+            padding: var(--bulma-size-1) var(--bulma-size-6);
             min-height: 100vh;
             display: flex;
             align-items: center;
         }
 
         .section-slide h2 {
-            font-size: 3rem;
-            font-weight: 700;
+            font-size: var(--bulma-size-2);
+            font-weight: var(--bulma-weight-bold);
             font-variant: small-caps;
-            margin-bottom: 2rem;
-            color: var(--black);
+            margin-bottom: var(--bulma-size-3);
+            color: var(--bulma-black);
             text-align: center;
         }
 
         .section-experience {
-            background-color: var(--white);
+            background-color: var(--bulma-white);
         }
 
         .section-education {
-            background-color: var(--white-smoke);
+            background-color: var(--bulma-white-bis);
         }
 
         .section-profile {
-            background-color: var(--white);
+            background-color: var(--bulma-white);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -185,22 +181,22 @@
 
         .experience-item {
             position: relative;
-            padding: 1rem 0.5rem 1rem 3rem;
-            margin-bottom: 1rem;
+            padding: var(--bulma-size-5) var(--bulma-size-6) var(--bulma-size-5) var(--bulma-size-4);
+            margin-bottom: var(--bulma-size-5);
             transition: all 0.3s ease;
         }
 
         .experience-item:hover {
             border-left-color: var(--imperial-red);
             padding-right: 0;
-            padding-left: 3.5rem;
+            padding-left: var(--bulma-size-2);
         }
 
         .experience-item::before {
             content: '';
             position: absolute;
             left: -8px;
-            top: 2rem;
+            top: var(--bulma-size-3);
             width: 13px;
             height: 13px;
             border-radius: 50%;
@@ -214,32 +210,32 @@
         }
 
         .experience-item h3 {
-            color: var(--black);
-            font-weight: 600;
-            font-size: 1.4rem;
-            margin-bottom: 0.3rem;
+            color: var(--bulma-black);
+            font-weight: var(--bulma-weight-semibold);
+            font-size: var(--bulma-size-5);
+            margin-bottom: var(--bulma-size-6);
         }
 
         .experience-item h4 {
             color: var(--imperial-red);
-            font-weight: 500;
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
+            font-weight: var(--bulma-weight-medium);
+            font-size: var(--bulma-size-6);
+            margin-bottom: var(--bulma-size-6);
         }
 
         .experience-item h5 {
-            color: var(--silver);
-            font-weight: 400;
-            font-size: 0.95rem;
+            color: var(--bulma-grey);
+            font-weight: var(--bulma-weight-normal);
+            font-size: var(--bulma-size-7);
             font-style: italic;
-            margin-bottom: 1.2rem;
+            margin-bottom: var(--bulma-size-4);
         }
 
         .experience-item p {
-            color: var(--black);
-            font-size: 0.95rem;
+            color: var(--bulma-black);
+            font-size: var(--bulma-size-7);
             line-height: 1.7;
-            margin-bottom: 0.4rem;
+            margin-bottom: var(--bulma-size-6);
         }
 
         .experience-item p:last-child {
@@ -255,15 +251,15 @@
         }
 
         .education-item {
-            margin-bottom: 0.5rem;
-            padding-bottom: 2rem;
+            margin-bottom: var(--bulma-size-6);
+            padding-bottom: var(--bulma-size-3);
             padding-left: 0;
-            padding-right: 0.5rem;
+            padding-right: var(--bulma-size-6);
             transition: all 0.3s ease;
         }
 
         .education-item:hover {
-            padding-left: 0.5rem;
+            padding-left: var(--bulma-size-6);
             padding-right: 0;
         }
 
@@ -274,23 +270,23 @@
         }
 
         .degree-line {
-            color: var(--black);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
+            color: var(--bulma-black);
+            font-size: var(--bulma-size-5);
+            font-weight: var(--bulma-weight-semibold);
+            margin-bottom: var(--bulma-size-6);
         }
 
         .degree-line .institution {
             color: var(--imperial-red);
-            font-weight: 500;
+            font-weight: var(--bulma-weight-medium);
         }
 
         .awards-text {
-            color: var(--silver);
-            font-size: 0.95rem;
+            color: var(--bulma-grey);
+            font-size: var(--bulma-size-7);
             font-style: italic;
             line-height: 1.5;
-            margin-top: 0.5rem;
+            margin-top: var(--bulma-size-6);
         }
 
         /* ========================================
@@ -310,7 +306,7 @@
             border: 4px solid var(--imperial-red);
             transition: all 0.3s ease;
             box-shadow: 0 8px 32px var(--mild-imperial-red);
-            margin-bottom: 2rem;
+            margin-bottom: var(--bulma-size-3);
         }
 
         .section-profile img:hover {
@@ -320,8 +316,8 @@
         }
 
         .section-profile p {
-            color: var(--black);
-            font-size: 1.1rem;
+            color: var(--bulma-black);
+            font-size: var(--bulma-size-6);
             line-height: 1.7;
             max-width: 500px;
             margin: 0 auto;
@@ -332,15 +328,15 @@
         ======================================== */
         .return-to-top {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: var(--bulma-size-3);
+            right: var(--bulma-size-3);
             width: 50px;
             height: 50px;
             background: var(--imperial-red);
-            color: var(--white);
+            color: var(--bulma-white);
             border: none;
             border-radius: 50%;
-            font-size: 1.2rem;
+            font-size: var(--bulma-size-5);
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
@@ -367,24 +363,24 @@
         ======================================== */
         @media screen and (max-width: 768px) {
             .main-title {
-                font-size: 2.5rem;
+                font-size: var(--bulma-size-2);
             }
 
             .subtitle-custom {
-                font-size: 1.2rem;
+                font-size: var(--bulma-size-5);
             }
 
             .section-slide h2 {
-                font-size: 2.5rem;
-                margin-bottom: 2rem;
+                font-size: var(--bulma-size-2);
+                margin-bottom: var(--bulma-size-3);
             }
 
             .degree-line {
-                font-size: 1.1rem;
+                font-size: var(--bulma-size-6);
             }
 
             .awards-text {
-                font-size: 0.9rem;
+                font-size: var(--bulma-size-7);
             }
 
             .section-profile img {
@@ -393,16 +389,16 @@
             }
 
             .section-profile p {
-                font-size: 1rem;
-                padding: 0 1rem;
+                font-size: var(--bulma-size-7);
+                padding: 0 var(--bulma-size-5);
             }
 
             .return-to-top {
-                bottom: 1.5rem;
-                right: 1.5rem;
+                bottom: var(--bulma-size-4);
+                right: var(--bulma-size-4);
                 width: 45px;
                 height: 45px;
-                font-size: 1.1rem;
+                font-size: var(--bulma-size-6);
             }
         }
 
@@ -424,8 +420,8 @@
             body {
                 font-size: 10pt;
                 line-height: 1.3;
-                color: var(--black);
-                background: var(--white);
+                color: var(--bulma-black);
+                background: var(--bulma-white);
                 margin: 0;
                 padding: 0;
             }
@@ -438,9 +434,9 @@
             /* Hero Section */
             .hero {
                 min-height: auto;
-                padding: 0.5rem 0;
-                margin-bottom: 0.75rem;
-                background: var(--white);
+                padding: var(--bulma-size-6) 0;
+                margin-bottom: var(--bulma-size-6);
+                background: var(--bulma-white);
             }
 
             .hero-body {
@@ -449,37 +445,37 @@
 
             .main-title {
                 font-size: 20pt;
-                margin-bottom: 0.15rem;
-                color: var(--black);
+                margin-bottom: var(--bulma-size-6);
+                color: var(--bulma-black);
             }
 
             .subtitle-custom {
                 font-size: 12pt;
-                margin-top: 0.15rem;
+                margin-top: var(--bulma-size-6);
             }
 
             .social-icons {
-                margin-top: 0.5rem;
+                margin-top: var(--bulma-size-6);
                 font-size: 10pt;
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
-                gap: 0.5rem;
+                gap: var(--bulma-size-6);
             }
 
             .social-icons a {
-                color: var(--black);
+                color: var(--bulma-black);
                 margin: 0;
                 text-decoration: none;
                 display: inline-flex;
                 align-items: center;
-                gap: 0.25rem;
+                gap: var(--bulma-size-6);
             }
 
             .social-icons a::after {
                 content: attr(href);
                 font-size: 8pt;
-                color: var(--black);
+                color: var(--bulma-black);
             }
 
             .social-icons a[title="Email"]::after {
@@ -489,17 +485,17 @@
             /* General Sections */
             .section-slide {
                 min-height: auto;
-                padding: 0.25rem 0;
+                padding: var(--bulma-size-6) 0;
                 page-break-inside: avoid;
-                background: var(--white);
+                background: var(--bulma-white);
             }
 
             .section-slide h2 {
                 font-size: 14pt;
-                margin: 0.75rem 0 0.5rem 0;
-                color: var(--black);
-                border-bottom: 1px solid var(--silver);
-                padding-bottom: 0.15rem;
+                margin: var(--bulma-size-6) 0;
+                color: var(--bulma-black);
+                border-bottom: 1px solid var(--bulma-grey);
+                padding-bottom: var(--bulma-size-6);
             }
 
             /* Experience Section */
@@ -511,8 +507,8 @@
             }
 
             .experience-item {
-                padding: 0.3rem 0 0.3rem 0.75rem;
-                margin-bottom: 0.5rem;
+                padding: var(--bulma-size-6) 0 var(--bulma-size-6) var(--bulma-size-6);
+                margin-bottom: var(--bulma-size-6);
                 page-break-inside: avoid;
                 orphans: 2;
                 widows: 2;
@@ -522,27 +518,27 @@
                 width: 6px;
                 height: 6px;
                 left: -8.5px;
-                top: 0.5rem;
+                top: var(--bulma-size-6);
             }
 
             .experience-item h3 {
                 font-size: 11pt;
-                margin-bottom: 0.05rem;
+                margin-bottom: var(--bulma-size-6);
             }
 
             .experience-item h4 {
                 font-size: 10pt;
-                margin-bottom: 0.05rem;
+                margin-bottom: var(--bulma-size-6);
             }
 
             .experience-item h5 {
                 font-size: 8pt;
-                margin-bottom: 0.3rem;
+                margin-bottom: var(--bulma-size-6);
             }
 
             .experience-item p {
                 font-size: 9pt;
-                margin-bottom: 0.15rem;
+                margin-bottom: var(--bulma-size-6);
                 line-height: 1.2;
             }
 
@@ -552,8 +548,8 @@
             }
 
             .education-item {
-                margin-bottom: 0.3rem;
-                padding-bottom: 0.3rem;
+                margin-bottom: var(--bulma-size-6);
+                padding-bottom: var(--bulma-size-6);
                 page-break-inside: avoid;
                 orphans: 2;
                 widows: 2;
@@ -565,11 +561,11 @@
 
             .degree-line {
                 font-size: 10pt;
-                margin-bottom: 0.1rem;
+                margin-bottom: var(--bulma-size-6);
             }
 
             .awards-text {
-                color: var(--silver);
+                color: var(--bulma-grey);
                 font-size: 8pt;
                 line-height: 1.2;
             }
@@ -577,7 +573,7 @@
             /* Profile Section */
             .section-profile {
                 min-height: auto;
-                padding: 0.25rem 0;
+                padding: var(--bulma-size-6) 0;
                 display: block;
             }
 
@@ -588,22 +584,22 @@
 
             .section-profile h2 {
                 font-size: 14pt;
-                margin: 0.75rem 0 0.5rem 0;
+                margin: var(--bulma-size-6) 0;
             }
 
             .section-profile img {
                 width: 60px;
                 height: 60px;
-                border: 1px solid var(--silver);
+                border: 1px solid var(--bulma-grey);
                 box-shadow: none;
-                margin-bottom: 0.5rem;
-                margin-right: 1rem;
+                margin-bottom: var(--bulma-size-6);
+                margin-right: var(--bulma-size-5);
             }
 
             .section-profile p {
                 font-size: 9pt;
                 line-height: 1.2;
-                margin-bottom: 0.15rem;
+                margin-bottom: var(--bulma-size-6);
                 max-width: none;
                 margin-left: 0;
                 margin-right: 0;
