@@ -72,7 +72,7 @@
                 transform: translateY(-10px);
                 opacity: 0;
                 visibility: hidden;
-                transition: all 0.3s ease;
+                transition: all var(--bulma-duration) var(--bulma-easing);
                 z-index: 1000;
             }
 
@@ -183,7 +183,7 @@
             position: relative;
             padding: var(--bulma-size-5) var(--bulma-size-6) var(--bulma-size-5) var(--bulma-size-4);
             margin-bottom: var(--bulma-size-5);
-            transition: all 0.3s ease;
+            transition: all var(--bulma-duration) var(--bulma-easing);
         }
 
         .experience-item:hover {
@@ -201,7 +201,7 @@
             height: 13px;
             border-radius: 50%;
             background-color: var(--mild-imperial-red);
-            transition: all 0.3s ease;
+            transition: all var(--bulma-duration) var(--bulma-easing);
         }
 
         .experience-item:hover::before {
@@ -213,14 +213,14 @@
             color: var(--bulma-black);
             font-weight: var(--bulma-weight-semibold);
             font-size: var(--bulma-size-5);
-            margin-bottom: var(--bulma-size-6);
+            margin-bottom: var(--bulma-size-7);
         }
 
         .experience-item h4 {
             color: var(--imperial-red);
             font-weight: var(--bulma-weight-medium);
             font-size: var(--bulma-size-6);
-            margin-bottom: var(--bulma-size-6);
+            margin-bottom: var(--bulma-size-7);
         }
 
         .experience-item h5 {
@@ -233,9 +233,8 @@
 
         .experience-item p {
             color: var(--bulma-black);
-            font-size: var(--bulma-size-7);
-            line-height: 1.7;
-            margin-bottom: var(--bulma-size-6);
+            font-size: var(--bulma-size-6);
+            margin-bottom: var(--bulma-size-7);
         }
 
         .experience-item p:last-child {
@@ -255,7 +254,7 @@
             padding-bottom: var(--bulma-size-3);
             padding-left: 0;
             padding-right: var(--bulma-size-6);
-            transition: all 0.3s ease;
+            transition: all var(--bulma-duration) var(--bulma-easing);
         }
 
         .education-item:hover {
@@ -304,7 +303,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--imperial-red);
-            transition: all 0.3s ease;
+            transition: all var(--bulma-duration) var(--bulma-easing);
             box-shadow: 0 8px 32px var(--mild-imperial-red);
             margin-bottom: var(--bulma-size-3);
         }
@@ -341,7 +340,7 @@
             opacity: 0;
             visibility: hidden;
             z-index: 999;
-            transition: all 0.3s ease;
+            transition: all var(--bulma-duration) var(--bulma-easing);
             transform: translateY(20px);
             box-shadow: 0 4px 16px var(--mild-imperial-red);
         }
