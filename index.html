@@ -817,24 +817,22 @@
             });
         }
 
-        // Show/hide return to top button and make navbar sticky
-        function handleScroll() {
-            const returnToTopBtn = document.querySelector('.return-to-top');
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (scrollTop > 300) {
-                returnToTopBtn.classList.add('show');
-            } else {
-                returnToTopBtn.classList.remove('show');
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
+            // Show/hide return to top button
+            function handleScroll() {
+                const returnToTopBtn = document.querySelector('.return-to-top');
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (scrollTop > 300) {
+                    returnToTopBtn.classList.add('show');
+                } else {
+                    returnToTopBtn.classList.remove('show');
+                }
+            }
             window.addEventListener('scroll', handleScroll);
 
-            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
             // Mobile menu toggle
+            const $navbarBurgers = document.querySelectorAll('.navbar-burger');
             if ($navbarBurgers.length > 0) {
                 $navbarBurgers.forEach(el => {
                     el.addEventListener('click', () => {
@@ -848,16 +846,10 @@
             }
 
             // Close mobile menu when clicking on menu items
-            const navbarItems = document.querySelectorAll('.navbar-item[onclick]');
-            navbarItems.forEach(item => {
+            document.querySelectorAll('.navbar-item[onclick]').forEach(item => {
                 item.addEventListener('click', () => {
-                    const navbarBurger = document.querySelector('.navbar-burger');
-                    const navbarMenu = document.querySelector('.navbar-menu');
-
-                    if (navbarBurger && navbarMenu) {
-                        navbarBurger.classList.remove('is-active');
-                        navbarMenu.classList.remove('is-active');
-                    }
+                    document.querySelector('.navbar-burger')?.classList.remove('is-active');
+                    document.querySelector('.navbar-menu')?.classList.remove('is-active');
                 });
             });
         });
