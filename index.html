@@ -134,7 +134,7 @@
             padding-top: 0;
         }
 
-        .main-title {
+        .title {
             color: var(--bulma-black);
             font-size: var(--bulma-size-1);
             font-weight: var(--bulma-weight-bold);
@@ -143,11 +143,7 @@
             margin-bottom: var(--bulma-size-5);
         }
 
-        .main-title .accent {
-            color: var(--bulma-primary);
-        }
-
-        .subtitle-custom {
+        .subtitle {
             color: var(--bulma-black);
             font-size: var(--bulma-size-4);
             font-weight: var(--bulma-weight-normal);
@@ -209,7 +205,7 @@
         .experience-list {
             max-width: 900px;
             margin: 0 auto;
-            border-left: 3px solid var(--bulma-primary-50);
+            border-left: 3px solid var(--bulma-primary-40);
         }
 
         .experience-item {
@@ -233,7 +229,7 @@
             width: 13px;
             height: 13px;
             border-radius: 50%;
-            background-color: var(--bulma-primary-50);
+            background-color: var(--bulma-primary-40);
             transition: all var(--bulma-duration) var(--bulma-easing);
         }
 
@@ -331,13 +327,12 @@
         }
 
         .section-profile img {
-            width: 280px;
-            height: 280px;
+            width: 256px;
             border-radius: 50%;
             object-fit: cover;
             border: 4px solid var(--bulma-primary);
             transition: all var(--bulma-duration) var(--bulma-easing);
-            box-shadow: 0 8px 32px var(--bulma-primary-50);
+            box-shadow: 0 8px 32px var(--bulma-primary-40);
             margin-bottom: var(--bulma-size-3);
         }
 
@@ -364,7 +359,7 @@
             right: var(--bulma-size-3);
             width: 50px;
             height: 50px;
-            background: var(--bulma-primary);
+            background: var(--bulma-primary-40);
             color: var(--bulma-white);
             border: none;
             border-radius: 50%;
@@ -375,7 +370,7 @@
             z-index: 999;
             transition: all var(--bulma-duration) var(--bulma-easing);
             transform: translateY(20px);
-            box-shadow: 0 4px 16px var(--bulma-primary-50);
+            box-shadow: 0 4px 16px var(--bulma-primary-40);
         }
 
         .return-to-top.show {
@@ -394,11 +389,11 @@
            MOBILE RESPONSIVE
         ======================================== */
         @media screen and (max-width: 768px) {
-            .main-title {
+            .title {
                 font-size: var(--bulma-size-2);
             }
 
-            .subtitle-custom {
+            .subtitle {
                 font-size: var(--bulma-size-5);
             }
 
@@ -475,13 +470,13 @@
                 padding: 0;
             }
 
-            .main-title {
+            .title {
                 font-size: 18pt;
                 margin-bottom: 4pt;
                 color: var(--bulma-black);
             }
 
-            .subtitle-custom {
+            .subtitle {
                 font-size: 11pt;
                 margin-top: 2pt;
             }
@@ -533,7 +528,7 @@
             /* Experience Section - Compact */
             .experience-list {
                 margin: 0;
-                border-left: 1px solid var(--bulma-primary-50);
+                border-left: 1px solid var(--bulma-primary-40);
                 padding-left: 5px;
                 margin-left: 5px;
             }
@@ -676,37 +671,33 @@
         </div>
 
         <div class="hero-body">
-            <div class="container has-text-centered">
-                <div class="columns is-centered">
-                    <div class="column is-10">
-                        <h1 class="main-title">
-                            <span class="accent">Vincent</span> Quenneville-Bélair, <span class="accent">phd</span>
-                        </h1>
-                        <p class="subtitle-custom">
-                            Applied Mathematician
-                        </p>
-                        <div class="social-icons">
-                            <a href="mailto:vincentqb@gmail.com" title="Email">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                            <a href="https://linkedin.com/in/vincentqb" target="_blank" title="LinkedIn">
-                                <i class="fab fa-linkedin"></i>
-                            </a>
-                            <a href="https://github.com/vincentqb" target="_blank" title="GitHub">
-                                <i class="fab fa-github"></i>
-                            </a>
-                            <a href="https://scholar.google.com/citations?user=B3XqkfMAAAAJ" target="_blank" title="Google Scholar">
-                                <i class="fas fa-graduation-cap"></i>
-                            </a>
-                        </div>
+            <div class="container is-centered has-text-centered">
+                    <h1 class="title">
+                        <span class="has-text-primary">Vincent</span> Quenneville-Bélair, <span class="has-text-primary">phd</span>
+                    </h1>
+                    <p class="subtitle">
+                        Applied Mathematician
+                    </p>
+                    <div class="social-icons">
+                        <a href="mailto:vincentqb@gmail.com" title="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/vincentqb" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/vincentqb" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=B3XqkfMAAAAJ" target="_blank" title="Google Scholar">
+                            <i class="fas fa-graduation-cap"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
         </div>
     </section>
 
     <section id="experience" class="section-slide section-experience">
-        <div class="container">
+        <div class="container is-centered">
             <h2>Experience</h2>
 
             <div class="experience-list">
@@ -754,7 +745,7 @@
     </section>
 
     <section id="education" class="section-slide section-education">
-        <div class="container">
+        <div class="container is-centered">
             <h2>Education</h2>
 
             <div class="education-list">
@@ -795,11 +786,11 @@
     </section>
 
     <section id="profile" class="section-slide section-profile">
-        <div class="container has-text-centered">
+        <div class="container is-centered has-text-centered">
             <h2>Profile</h2>
 
             <div class="profile-content">
-                <img src="profile.jpg" alt="Vincent Quenneville-Bélair">
+                <img class="is-1by1" src="profile.jpg" alt="Vincent Quenneville-Bélair">
                 <p>Vincent Quenneville-Bélair, PhD, Applied Mathematician.</p>
             </div>
         </div>
