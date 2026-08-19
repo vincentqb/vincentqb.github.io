@@ -17,7 +17,7 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 # Configuration Constants
 DEFAULT_DATA_FILE = "data.yaml"
 DEFAULT_TEMPLATE_DIR = "templates"
-DEFAULT_OUTPUT_DIR = "."  # Root directory for GitHub Pages
+DEFAULT_OUTPUT_DIR = "docs"  # docs folder for GitHub Pages /docs deployment
 
 
 def load_data(filepath: str | Path) -> dict:
