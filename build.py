@@ -96,10 +96,11 @@ def build(data_file: str | Path, template_dir: str | Path, output_dir: str | Pat
         output_path=out_dir / "llms.txt",
     )
 
-    # Copy profile picture if building to a separate destination folder
+    # Copy static assets (CSS, profile picture) if building to a separate destination folder
     if out_dir.resolve() != Path(".").resolve():
         image_name = site_data.get("person", {}).get("image", "profile.jpg")
         copy_static_assets(image_name, out_dir)
+        copy_static_assets("style.css", out_dir)
 
     print("\nBuild completed successfully!")
 
