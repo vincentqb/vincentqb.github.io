@@ -1,0 +1,31 @@
+# {{ data.person.name }}, {{ data.person.degrees }}
+
+> {{ data.person.headline or data.person.title }} — {{ data.person.description }}
+
+## Contact & Links
+- Website: {{ data.person.url }}
+- Email: {{ data.person.email }}
+{% for link in data.social if link.name != 'Email' %}
+- {{ link.name }}: {{ link.url }}
+{% endfor %}
+
+## Professional Experience
+{% for job in data.experience %}
+### {{ job.role }} — {% if job.team %}{{ job.team }}, {% endif %}{{ job.company }} ({{ job.start }} – {{ job.end }})
+{% for item in job.achievements %}
+- {{ item }}
+{% endfor %}
+{% if not loop.last %}
+
+{% endif %}
+{% endfor %}
+
+## Education
+{% for edu in data.education %}
+- **{{ edu.degree }}**, {{ edu.institution }}
+{% if edu.awards %}
+  - Honors & Awards: {{ edu.awards | join(', ') }}.
+{% elif edu.notes %}
+  - Notes: {{ edu.notes }}
+{% endif %}
+{% endfor %}
