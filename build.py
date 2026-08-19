@@ -17,7 +17,8 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 # Configuration Constants
 DEFAULT_DATA_FILE = "data.yaml"
 DEFAULT_TEMPLATE_DIR = "templates"
-DEFAULT_OUTPUT_DIR = "docs"  # docs folder for GitHub Pages /docs deployment
+DEFAULT_STATIC_DIR = "static"
+DEFAULT_OUTPUT_DIR = "docs"  # Output folder for GitHub Pages /docs deployment
 
 
 def load_data(filepath: str | Path) -> dict:
@@ -58,21 +59,34 @@ def render_template(env: Environment, template_name: str, data: dict, output_pat
     print(f"✓ Generated: {output_path} ({len(content)} bytes)")
 
 
-def copy_static_assets(src_file: str | Path, dest_dir: str | Path) -> None:
-    """Copy static assets (e.g., profile.jpg) if building to a subfolder."""
-    src = Path(src_file)
-    dest = Path(dest_dir) / src.name
+def copy_static_assets(src_dir: str | Path, dest_dir: str | Path) -> None:
+    """Copy all static assets from src_dir to dest_dir."""
+    src = Path(src_dir)
+    dest = Path(dest_dir)
+
+    if not src.exists():
+        print(f"! Warning: Static directory '{src}' not found. Skipping static assets.")
+        return
 
     if src.resolve() == dest.resolve():
         return
 
-    if src.exists():
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(src, dest)
-        print(f"✓ Copied asset: {src} -> {dest}")
+    dest.mkdir(parents=True, exist_ok=True)
+    for item in sorted(src.iterdir()):
+        target = dest / item.name
+        if item.is_dir():
+            shutil.copytree(item, target, dirs_exist_ok=True)
+        else:
+            shutil.copy2(item, target)
+        print(f"✓ Copied asset: {item} -> {target}")
 
 
-def build(data_file: str | Path, template_dir: str | Path, output_dir: str | Path) -> None:
+def build(
+    data_file: str | Path,
+    template_dir: str | Path,
+    static_dir: str | Path,
+    output_dir: str | Path,
+) -> None:
     """Execute site generation."""
     out_dir = Path(output_dir)
     print(f"Building website into '{out_dir}'...")
@@ -96,18 +110,15 @@ def build(data_file: str | Path, template_dir: str | Path, output_dir: str | Pat
         output_path=out_dir / "llms.txt",
     )
 
-    # Copy static assets (CSS, profile picture) if building to a separate destination folder
-    if out_dir.resolve() != Path(".").resolve():
-        image_name = site_data.get("person", {}).get("image", "profile.jpg")
-        copy_static_assets(image_name, out_dir)
-        copy_static_assets("style.css", out_dir)
+    # Copy static assets (e.g. style.css, profile.jpg)
+    copy_static_assets(static_dir, out_dir)
 
     print("\nBuild completed successfully!")
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Static site generator for vincentqb.github.io (generates index.html and llms.txt)"
+        description="Static site generator for vincentqb.github.io (generates index.html, llms.txt, and static assets)"
     )
     parser.add_argument(
         "--output-dir",
@@ -127,6 +138,12 @@ def main() -> None:
         default=DEFAULT_TEMPLATE_DIR,
         help=f"Path to template directory (default: '{DEFAULT_TEMPLATE_DIR}')",
     )
+    parser.add_argument(
+        "--static",
+        "-s",
+        default=DEFAULT_STATIC_DIR,
+        help=f"Path to static assets directory (default: '{DEFAULT_STATIC_DIR}')",
+    )
 
     args = parser.parse_args()
 
@@ -134,6 +151,7 @@ def main() -> None:
         build(
             data_file=args.data,
             template_dir=args.templates,
+            static_dir=args.static,
             output_dir=args.output_dir,
         )
     except Exception as e:
