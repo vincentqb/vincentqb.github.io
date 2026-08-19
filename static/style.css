@@ -436,49 +436,6 @@ html, body {
 }
 
 /* ========================================
-   DARK MODE
-======================================== */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bulma-body-background-color: #121212;
-        --bulma-body-color: #e5e5e5;
-        --bulma-white: #121212;
-        --bulma-white-bis: #1a1a1a;
-        --bulma-black: #f5f5f5;
-        --bulma-grey: #a3a3a3;
-        --bulma-primary-h: 0deg;
-        --bulma-primary-s: 85%;
-        --bulma-primary-l: 60%;
-        --bulma-primary-40: hsla(0, 85%, 60%, 0.4);
-    }
-
-    body {
-        background-color: #121212;
-        color: #e5e5e5;
-    }
-
-    @media screen and (max-width: 1023px) {
-        .navbar-menu {
-            background-color: #1a1a1a !important;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7) !important;
-        }
-    }
-
-    .navbar-burger span {
-        background-color: #f5f5f5;
-    }
-
-    .section-profile img {
-        border-color: var(--bulma-primary);
-        box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3);
-    }
-
-    .return-to-top {
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-    }
-}
-
-/* ========================================
    PRINT STYLES - COMPACT
 ======================================== */
 @media print {
