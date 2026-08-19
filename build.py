@@ -2,8 +2,8 @@
 # /// script
 # requires-python = ">=3.11"
 # dependencies = [
-#     "jinja2>=3.1.3",
-#     "pyyaml>=6.0.1",
+#     "jinja2>=3.1.6",
+#     "pyyaml>=6.0.3",
 # ]
 # ///
 
