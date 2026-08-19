@@ -1,67 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% if data.site and data.site.google_analytics_id %}
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3YKX90BJMC"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ data.site.google_analytics_id }}"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-3YKX90BJMC');
+        gtag('config', '{{ data.site.google_analytics_id }}');
     </script>
+    {% endif %}
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vincent Quenneville-Bélair, PhD</title>
-    <meta name="description" content="Vincent Quenneville-Bélair, PhD — Applied Mathematician and Machine Learning Scientist. Supply Chain Forecasting at Amazon, creator of PyTorch torchaudio.">
-    <link rel="canonical" href="https://vincentqb.github.io/">
-    <link rel="alternate" type="text/markdown" href="https://vincentqb.github.io/llms.txt" title="LLMs.txt">
+    <title>{{ data.person.name }}, {{ data.person.degrees }}</title>
+    <meta name="description" content="{{ data.person.description }}">
+    <link rel="canonical" href="{{ data.person.url }}">
+    <link rel="alternate" type="text/markdown" href="{{ data.person.url }}llms.txt" title="LLMs.txt">
 
     <!-- Open Graph Metadata -->
-    <meta property="og:site_name" content="Vincent Quenneville-Bélair">
-    <meta property="og:title" content="Vincent Quenneville-Bélair, PhD">
-    <meta property="og:description" content="Vincent Quenneville-Bélair, PhD — Applied Mathematician and Machine Learning Scientist. Supply Chain Forecasting at Amazon, creator of PyTorch torchaudio.">
-    <meta property="og:url" content="https://vincentqb.github.io/">
+    <meta property="og:site_name" content="{{ data.person.name }}">
+    <meta property="og:title" content="{{ data.person.name }}, {{ data.person.degrees }}">
+    <meta property="og:description" content="{{ data.person.description }}">
+    <meta property="og:url" content="{{ data.person.url }}">
     <meta property="og:type" content="profile">
-    <meta property="og:image" content="https://vincentqb.github.io/profile.jpg">
+    <meta property="og:image" content="{{ data.person.url }}{{ data.person.image }}">
 
     <!-- Twitter Card Metadata -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Vincent Quenneville-Bélair, PhD">
-    <meta name="twitter:description" content="Vincent Quenneville-Bélair, PhD — Applied Mathematician and Machine Learning Scientist. Supply Chain Forecasting at Amazon, creator of PyTorch torchaudio.">
-    <meta name="twitter:image" content="https://vincentqb.github.io/profile.jpg">
+    <meta name="twitter:title" content="{{ data.person.name }}, {{ data.person.degrees }}">
+    <meta name="twitter:description" content="{{ data.person.description }}">
+    <meta name="twitter:image" content="{{ data.person.url }}{{ data.person.image }}">
 
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
-      "name": "Vincent Quenneville-B\u00e9lair",
-      "jobTitle": "Applied Mathematician",
-      "description": "Vincent Quenneville-B\u00e9lair, PhD \u2014 Applied Mathematician and Machine Learning Scientist. Supply Chain Forecasting at Amazon, creator of PyTorch torchaudio.",
-      "url": "https://vincentqb.github.io/",
-      "image": "https://vincentqb.github.io/profile.jpg",
-      "sameAs": ["https://linkedin.com/in/vincentqb", "https://github.com/vincentqb", "https://scholar.google.com/citations?user=B3XqkfMAAAAJ"],
-      "worksFor": [{
+      "name": {{ data.person.name | tojson }},
+      "jobTitle": {{ data.person.title | tojson }},
+      "description": {{ data.person.description | tojson }},
+      "url": {{ data.person.url | tojson }},
+      "image": {{ (data.person.url ~ data.person.image) | tojson }},
+      "sameAs": [
+        {%- set same_as_links = [] -%}
+        {%- for link in data.social if link.url.startswith('http') -%}
+          {%- set _ = same_as_links.append(link.url) -%}
+        {%- endfor -%}
+        {%- for url in same_as_links -%}
+        {{ url | tojson }}{% if not loop.last %}, {% endif %}
+        {%- endfor -%}
+      ],
+      "worksFor": [
+        {%- set companies = [] -%}
+        {%- for job in data.experience -%}
+          {%- if job.company not in companies -%}
+            {%- set _ = companies.append(job.company) -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- for comp in companies -%}
+        {
           "@type": "Organization",
-          "name": "Amazon"
-        }, {
-          "@type": "Organization",
-          "name": "Facebook AI"
-        }, {
-          "@type": "Organization",
-          "name": "Vizanda"
-        }, {
-          "@type": "Organization",
-          "name": "Columbia University"
-        }],
-      "alumniOf": [{
+          "name": {{ comp | tojson }}
+        }{% if not loop.last %}, {% endif %}
+        {%- endfor -%}
+      ],
+      "alumniOf": [
+        {%- set institutions = [] -%}
+        {%- for edu in data.education -%}
+          {%- if edu.institution not in institutions -%}
+            {%- set _ = institutions.append(edu.institution) -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- for inst in institutions -%}
+        {
           "@type": "EducationalOrganization",
-          "name": "University of Minnesota"
-        }, {
-          "@type": "EducationalOrganization",
-          "name": "McGill University"
-        }]
+          "name": {{ inst | tojson }}
+        }{% if not loop.last %}, {% endif %}
+        {%- endfor -%}
+      ]
     }
     </script>
 
@@ -560,7 +578,7 @@
             }
 
             .social-icons a[title="Email"]::after {
-                content: "vincentqb@gmail.com";
+                content: "{{ data.person.email }}";
             }
 
             /* General Sections - Compact */
@@ -727,24 +745,17 @@
         <div class="hero-body">
             <div class="container is-centered has-text-centered">
                     <h1>
-                        <span class="has-text-primary">Vincent</span> Quenneville-Bélair, <span class="has-text-primary">phd</span>
+                        <span class="has-text-primary">{{ data.person.first_name }}</span> {{ data.person.last_name }}, <span class="has-text-primary">{{ data.person.degrees | lower }}</span>
                     </h1>
                     <h2>
-                        Applied Mathematician
+                        {{ data.person.title }}
                     </h2>
                     <div class="social-icons">
-                        <a href="mailto:vincentqb@gmail.com" title="Email">
-                            <i class="fas fa-envelope"></i>
+                        {% for link in data.social %}
+                        <a href="{{ link.url }}"{% if link.target %} target="{{ link.target }}"{% endif %} title="{{ link.name }}">
+                            <i class="{{ link.icon }}"></i>
                         </a>
-                        <a href="https://linkedin.com/in/vincentqb" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://github.com/vincentqb" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://scholar.google.com/citations?user=B3XqkfMAAAAJ" target="_blank" title="Google Scholar">
-                            <i class="fas fa-graduation-cap"></i>
-                        </a>
+                        {% endfor %}
                     </div>
                 </div>
         </div>
@@ -755,41 +766,16 @@
             <h2>Experience</h2>
 
             <div class="experience-list">
+                {% for job in data.experience %}
                 <div class="experience-item">
-                    <h3>Machine Learning Scientist</h3>
-                    <h4>Supply Chain Forecasting, Amazon</h4>
-                    <h5>2021 - Present</h5>
-                    <p>Design deep learning attention-based models to forecast product demand for supply chain optimization.</p>
-                    <p>Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners.</p>
+                    <h3>{{ job.role }}</h3>
+                    <h4>{% if job.team %}{{ job.team }}, {% endif %}{{ job.company }}</h4>
+                    <h5>{{ job.start }} - {{ job.end }}</h5>
+                    {% for item in job.achievements %}
+                    <p>{{ item }}</p>
+                    {% endfor %}
                 </div>
-                <div class="experience-item">
-                    <h3>Machine Learning Engineer</h3>
-                    <h4>PyTorch, Facebook AI</h4>
-                    <h5>2019 - 2021</h5>
-                    <p>Create torchaudio library, engaging over 200 open source contributors.</p>
-                    <p>Develop speech-to-text and text-to-speech deep learning models.</p>
-                    <p>Integrate novel PyTorch optimizers collaborating with academic and industrial researchers.</p>
-                </div>
-                <div class="experience-item">
-                    <h3>Machine Learning Scientist</h3>
-                    <h4>Supply Chain Forecasting and Marketing Measurement, Amazon</h4>
-                    <h5>2017 - 2019</h5>
-                    <p>Generate long-term strategic inventory capacity forecast. Model counterfactual scenarios. Optimize supply chain expansion recommendations.</p>
-                    <p>Build causal impact models to estimate advertising campaign lift. Infer future returns and optimize advertising portfolio.</p>
-                    <p>Teach internal machine learning specialization course series on matrix factorization, dimensionality reduction, and recommender systems.</p>
-                </div>
-                <div class="experience-item">
-                    <h3>Chief Data Scientist</h3>
-                    <h4>Vizanda</h4>
-                    <h5>2016 - 2017</h5>
-                    <p>Develop web-based software to automatically extract information from structured and unstructured data on the fly. Process the information to programmatically generate relevant visualizations and intelligent insights.</p>
-                </div>
-                <div class="experience-item">
-                    <h3>Chu Assistant Professor of Applied Mathematics</h3>
-                    <h4>Columbia University</h4>
-                    <h5>2015 - 2017</h5>
-                    <p>Model gravitational wave propagation to understand black hole collisions. Create and analyze novel specialized mixed finite element methods to simulate these models numerically.</p>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -799,35 +785,23 @@
             <h2>Education</h2>
 
             <div class="education-list">
+                {% for edu in data.education %}
                 <div class="education-item">
                     <div class="degree-line">
-                        <span class="degree">PhD Applied Mathematics</span>,
-                        <span class="institution">University of Minnesota</span>
+                        <span class="degree">{{ edu.degree }}</span>,
+                        <span class="institution">{{ edu.institution }}</span>
                     </div>
+                    {% if edu.awards %}
                     <div class="awards-text">
-                        NSERC Alexander Graham Bell Canada Graduate Scholarship,
-                        FQRNT Research Scholarship,
-                        University of Minnesota Doctoral Dissertation Fellowship.
+                        {{ edu.awards | join(',\n                        ') }}.
                     </div>
-                </div>
-                <div class="education-item">
-                    <div class="degree-line">
-                        <span class="degree">MCS Computer Science</span>,
-                        <span class="institution">University of Minnesota</span>
+                    {% elif edu.notes %}
+                    <div class="awards-text">
+                        {{ edu.notes }}
                     </div>
+                    {% endif %}
                 </div>
-                <div class="education-item">
-                    <div class="degree-line">
-                        <span class="degree">MSc Applied Mathematics</span>,
-                        <span class="institution">University of Minnesota</span>
-                    </div>
-                </div>
-                <div class="education-item">
-                    <div class="degree-line">
-                        <span class="degree">BSc Mathematics and Physics</span>,
-                        <span class="institution">McGill University</span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -837,8 +811,8 @@
             <h2>Profile</h2>
 
             <div class="profile-content">
-                <img class="is-1by1" src="profile.jpg" alt="Vincent Quenneville-Bélair">
-                <p>Vincent Quenneville-Bélair, PhD, Applied Mathematician.</p>
+                <img class="is-1by1" src="{{ data.person.image }}" alt="{{ data.person.name }}">
+                <p>{{ data.person.bio }}</p>
             </div>
         </div>
     </section>

@@ -1,0 +1,38 @@
+# Vincent Quenneville-Bélair, PhD
+
+> Applied Mathematician & Machine Learning Scientist — Vincent Quenneville-Bélair, PhD — Applied Mathematician and Machine Learning Scientist. Supply Chain Forecasting at Amazon, creator of PyTorch torchaudio.
+
+## Contact & Links
+- Website: https://vincentqb.github.io/
+- Email: vincentqb@gmail.com
+- LinkedIn: https://linkedin.com/in/vincentqb
+- GitHub: https://github.com/vincentqb
+- Google Scholar: https://scholar.google.com/citations?user=B3XqkfMAAAAJ
+
+## Professional Experience
+### Machine Learning Scientist — Supply Chain Forecasting, Amazon (2021 – Present)
+- Design deep learning attention-based models to forecast product demand for supply chain optimization.
+- Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners.
+
+### Machine Learning Engineer — PyTorch, Facebook AI (2019 – 2021)
+- Create torchaudio library, engaging over 200 open source contributors.
+- Develop speech-to-text and text-to-speech deep learning models.
+- Integrate novel PyTorch optimizers collaborating with academic and industrial researchers.
+
+### Machine Learning Scientist — Supply Chain Forecasting and Marketing Measurement, Amazon (2017 – 2019)
+- Generate long-term strategic inventory capacity forecast. Model counterfactual scenarios. Optimize supply chain expansion recommendations.
+- Build causal impact models to estimate advertising campaign lift. Infer future returns and optimize advertising portfolio.
+- Teach internal machine learning specialization course series on matrix factorization, dimensionality reduction, and recommender systems.
+
+### Chief Data Scientist — Vizanda (2016 – 2017)
+- Develop web-based software to automatically extract information from structured and unstructured data on the fly. Process the information to programmatically generate relevant visualizations and intelligent insights.
+
+### Chu Assistant Professor of Applied Mathematics — Columbia University (2015 – 2017)
+- Model gravitational wave propagation to understand black hole collisions. Create and analyze novel specialized mixed finite element methods to simulate these models numerically.
+
+## Education
+- **PhD Applied Mathematics**, University of Minnesota
+  - Honors & Awards: NSERC Alexander Graham Bell Canada Graduate Scholarship, FQRNT Research Scholarship, University of Minnesota Doctoral Dissertation Fellowship.
+- **MCS Computer Science**, University of Minnesota
+- **MSc Applied Mathematics**, University of Minnesota
+- **BSc Mathematics and Physics**, McGill University

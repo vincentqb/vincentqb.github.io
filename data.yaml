@@ -1,0 +1,90 @@
+site:
+  google_analytics_id: "G-3YKX90BJMC"
+
+person:
+  name: "Vincent Quenneville-Bélair"
+  first_name: "Vincent"
+  last_name: "Quenneville-Bélair"
+  degrees: "PhD"
+  title: "Applied Mathematician"
+  headline: "Applied Mathematician & Machine Learning Scientist"
+  description: "Vincent Quenneville-Bélair, PhD — Applied Mathematician and Machine Learning Scientist. Supply Chain Forecasting at Amazon, creator of PyTorch torchaudio."
+  bio: "Vincent Quenneville-Bélair, PhD, Applied Mathematician."
+  url: "https://vincentqb.github.io/"
+  image: "profile.jpg"
+  email: "vincentqb@gmail.com"
+
+social:
+  - name: "Email"
+    url: "mailto:vincentqb@gmail.com"
+    icon: "fas fa-envelope"
+  - name: "LinkedIn"
+    url: "https://linkedin.com/in/vincentqb"
+    icon: "fab fa-linkedin"
+    target: "_blank"
+  - name: "GitHub"
+    url: "https://github.com/vincentqb"
+    icon: "fab fa-github"
+    target: "_blank"
+  - name: "Google Scholar"
+    url: "https://scholar.google.com/citations?user=B3XqkfMAAAAJ"
+    icon: "fas fa-graduation-cap"
+    target: "_blank"
+
+experience:
+  - role: "Machine Learning Scientist"
+    team: "Supply Chain Forecasting"
+    company: "Amazon"
+    start: "2021"
+    end: "Present"
+    achievements:
+      - "Design deep learning attention-based models to forecast product demand for supply chain optimization."
+      - "Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners."
+
+  - role: "Machine Learning Engineer"
+    team: "PyTorch"
+    company: "Facebook AI"
+    start: "2019"
+    end: "2021"
+    achievements:
+      - "Create torchaudio library, engaging over 200 open source contributors."
+      - "Develop speech-to-text and text-to-speech deep learning models."
+      - "Integrate novel PyTorch optimizers collaborating with academic and industrial researchers."
+
+  - role: "Machine Learning Scientist"
+    team: "Supply Chain Forecasting and Marketing Measurement"
+    company: "Amazon"
+    start: "2017"
+    end: "2019"
+    achievements:
+      - "Generate long-term strategic inventory capacity forecast. Model counterfactual scenarios. Optimize supply chain expansion recommendations."
+      - "Build causal impact models to estimate advertising campaign lift. Infer future returns and optimize advertising portfolio."
+      - "Teach internal machine learning specialization course series on matrix factorization, dimensionality reduction, and recommender systems."
+
+  - role: "Chief Data Scientist"
+    company: "Vizanda"
+    start: "2016"
+    end: "2017"
+    achievements:
+      - "Develop web-based software to automatically extract information from structured and unstructured data on the fly. Process the information to programmatically generate relevant visualizations and intelligent insights."
+
+  - role: "Chu Assistant Professor of Applied Mathematics"
+    company: "Columbia University"
+    start: "2015"
+    end: "2017"
+    achievements:
+      - "Model gravitational wave propagation to understand black hole collisions. Create and analyze novel specialized mixed finite element methods to simulate these models numerically."
+
+education:
+  - degree: "PhD Applied Mathematics"
+    institution: "University of Minnesota"
+    awards:
+      - "NSERC Alexander Graham Bell Canada Graduate Scholarship"
+      - "FQRNT Research Scholarship"
+      - "University of Minnesota Doctoral Dissertation Fellowship"
+  - degree: "MCS Computer Science"
+    institution: "University of Minnesota"
+  - degree: "MSc Applied Mathematics"
+    institution: "University of Minnesota"
+  - degree: "BSc Mathematics and Physics"
+    institution: "McGill University"
