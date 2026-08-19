@@ -157,17 +157,23 @@ html, body {
    SECTION LAYOUTS
 ======================================== */
 .section-slide {
-    padding: var(--bulma-size-1) var(--bulma-size-6);
-    min-height: 100vh;
+    padding: 6rem 1.5rem;
+    min-height: 85vh;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+.section-slide .container {
+    width: 100%;
 }
 
 .section-slide h2 {
     font-size: var(--bulma-size-2);
     font-weight: var(--bulma-weight-bold);
     font-variant: small-caps;
-    margin-bottom: var(--bulma-size-3);
+    letter-spacing: 0.05em;
+    margin-bottom: var(--bulma-size-2);
     color: var(--bulma-black);
     text-align: center;
 }
@@ -182,9 +188,7 @@ html, body {
 
 .section-profile {
     background-color: var(--bulma-white-bis);
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    min-height: 70vh;
 }
 
 /* ========================================
@@ -377,6 +381,15 @@ html, body {
    MOBILE RESPONSIVE
 ======================================== */
 @media screen and (max-width: 768px) {
+    .section-slide {
+        padding: 4rem 1.25rem;
+        min-height: auto;
+    }
+
+    .hero {
+        min-height: 90vh;
+    }
+
     .hero-body h1 {
         font-size: var(--bulma-size-2);
     }
