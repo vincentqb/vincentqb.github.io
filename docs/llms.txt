@@ -10,9 +10,12 @@
 - Google Scholar: https://scholar.google.com/citations?user=B3XqkfMAAAAJ
 
 ## Professional Experience
-### Machine Learning Scientist — Supply Chain Forecasting, Amazon (2021 – Present)
-- Design deep learning attention-based models to forecast product demand for supply chain optimization.
+### Machine Learning Scientist — Supply Chain Optimization Technologies, Amazon (2021 – Present)
+- Build an autonomous search over optimization policies, using a Lean kernel to certify candidates and promote provably best ones.
+- Prototype predictive model for inventory placement, accelerating pipelines by reframing decision-making into a forecasting formulation.
 - Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners.
+- Design deep learning attention-based models to forecast product demand for supply chain optimization.
+- Leverage LLM embeddings and approximate nearest-neighbor retrieval to capture cross-product demand effects, sharing demand signal across semantically similar products.
 
 ### Machine Learning Engineer — PyTorch, Facebook AI (2019 – 2021)
 - Create torchaudio library, engaging over 200 open source contributors.

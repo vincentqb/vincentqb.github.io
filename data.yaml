@@ -33,13 +33,16 @@ social:
 
 experience:
   - role: "Machine Learning Scientist"
-    team: "Supply Chain Forecasting"
+    team: "Supply Chain Optimization Technologies"
     company: "Amazon"
     start: "2021"
     end: "Present"
     achievements:
-      - "Design deep learning attention-based models to forecast product demand for supply chain optimization."
+      - "Build an autonomous search over optimization policies, using a Lean kernel to certify candidates and promote provably best ones."
+      - "Prototype predictive model for inventory placement, accelerating pipelines by reframing decision-making into a forecasting formulation."
       - "Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners."
+      - "Design deep learning attention-based models to forecast product demand for supply chain optimization."
+      - "Leverage LLM embeddings and approximate nearest-neighbor retrieval to capture cross-product demand effects, sharing demand signal across semantically similar products."
 
   - role: "Machine Learning Engineer"
     team: "PyTorch"
