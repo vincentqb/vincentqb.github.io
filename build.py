@@ -4,22 +4,18 @@
 # dependencies = [
 #     "jinja2>=3.1.6",
 #     "pyyaml>=6.0.3",
+#     "typer>=0.15",
 # ]
 # ///
 
-import argparse
 import shutil
 import sys
 from pathlib import Path
+from typing import Annotated
 
+import typer
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
-
-# Configuration Constants
-DEFAULT_DATA_FILE = "data.yaml"
-DEFAULT_TEMPLATE_DIR = "templates"
-DEFAULT_STATIC_DIR = "static"
-DEFAULT_OUTPUT_DIR = "docs"  # Output folder for GitHub Pages /docs deployment
 
 
 def load_data(filepath: str | Path) -> dict:
@@ -83,82 +79,44 @@ def copy_static_assets(src_dir: str | Path, dest_dir: str | Path) -> None:
 
 
 def build(
-    data_file: str | Path,
-    template_dir: str | Path,
-    static_dir: str | Path,
-    output_dir: str | Path,
+    data: Annotated[Path, typer.Option("--data", "-d", help="Path to data YAML file.")] = Path("data.yaml"),
+    templates: Annotated[Path, typer.Option("--templates", "-t", help="Path to template directory.")] = Path("templates"),
+    static: Annotated[Path, typer.Option("--static", "-s", help="Path to static assets directory.")] = Path("static"),
+    output_dir: Annotated[
+        Path, typer.Option("--output-dir", "-o", help="Target output directory (GitHub Pages /docs deployment).")
+    ] = Path("docs"),
 ) -> None:
-    """Execute site generation."""
-    out_dir = Path(output_dir)
-    print(f"Building website into '{out_dir}'...")
+    """Static site generator for vincentqb.github.io (generates index.html, llms.txt, and static assets)."""
+    print(f"Building website into '{output_dir}'...")
 
-    site_data = load_data(data_file)
-    jinja_env = setup_jinja_env(template_dir)
+    try:
+        site_data = load_data(data)
+        jinja_env = setup_jinja_env(templates)
 
-    # Render main index.html
-    render_template(
-        env=jinja_env,
-        template_name="index.html.j2",
-        data=site_data,
-        output_path=out_dir / "index.html",
-    )
+        # Render main index.html
+        render_template(
+            env=jinja_env,
+            template_name="index.html.j2",
+            data=site_data,
+            output_path=output_dir / "index.html",
+        )
 
-    # Render llms.txt for AI/LLM crawlers
-    render_template(
-        env=jinja_env,
-        template_name="llms.txt.j2",
-        data=site_data,
-        output_path=out_dir / "llms.txt",
-    )
+        # Render llms.txt for AI/LLM crawlers
+        render_template(
+            env=jinja_env,
+            template_name="llms.txt.j2",
+            data=site_data,
+            output_path=output_dir / "llms.txt",
+        )
 
-    # Copy static assets (e.g. style.css, profile.jpg)
-    copy_static_assets(static_dir, out_dir)
+        # Copy static assets (e.g. style.css, profile.jpg)
+        copy_static_assets(static, output_dir)
+    except Exception as e:
+        print(f"\n❌ Build failed: {e}", file=sys.stderr)
+        raise typer.Exit(code=1) from e
 
     print("\nBuild completed successfully!")
 
 
-def main() -> None:
-    parser = argparse.ArgumentParser(
-        description="Static site generator for vincentqb.github.io (generates index.html, llms.txt, and static assets)"
-    )
-    parser.add_argument(
-        "--output-dir",
-        "-o",
-        default=DEFAULT_OUTPUT_DIR,
-        help=f"Target output directory (default: '{DEFAULT_OUTPUT_DIR}')",
-    )
-    parser.add_argument(
-        "--data",
-        "-d",
-        default=DEFAULT_DATA_FILE,
-        help=f"Path to data YAML file (default: '{DEFAULT_DATA_FILE}')",
-    )
-    parser.add_argument(
-        "--templates",
-        "-t",
-        default=DEFAULT_TEMPLATE_DIR,
-        help=f"Path to template directory (default: '{DEFAULT_TEMPLATE_DIR}')",
-    )
-    parser.add_argument(
-        "--static",
-        "-s",
-        default=DEFAULT_STATIC_DIR,
-        help=f"Path to static assets directory (default: '{DEFAULT_STATIC_DIR}')",
-    )
-
-    args = parser.parse_args()
-
-    try:
-        build(
-            data_file=args.data,
-            template_dir=args.templates,
-            static_dir=args.static,
-            output_dir=args.output_dir,
-        )
-    except Exception as e:
-        print(f"\n❌ Build failed: {e}", file=sys.stderr)
-        sys.exit(1)
-
-
 if __name__ == "__main__":
-    main()
+    typer.run(build)
