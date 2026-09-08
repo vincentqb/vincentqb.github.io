@@ -15,34 +15,35 @@ from pathlib import Path
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-DATA_FILE = Path("data.yaml")
-TEMPLATE_DIR = Path("templates")
-STATIC_DIR = Path("static")
-OUTPUT_DIR = Path("docs")
 TEMPLATES = {"index.html.j2": "index.html", "llms.txt.j2": "llms.txt"}
 
 
-def build() -> None:
-    data = yaml.safe_load(DATA_FILE.read_text(encoding="utf-8"))
+def build(
+    data_file: Path = Path("data.yaml"),
+    template_dir: Path = Path("templates"),
+    static_dir: Path = Path("static"),
+    output_dir: Path = Path("docs"),
+) -> None:
+    data = yaml.safe_load(data_file.read_text(encoding="utf-8"))
     env = Environment(
-        loader=FileSystemLoader(TEMPLATE_DIR),
+        loader=FileSystemLoader(template_dir),
         autoescape=select_autoescape(["html", "xml"]),
         trim_blocks=True,
         lstrip_blocks=True,
     )
 
-    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    output_dir.mkdir(parents=True, exist_ok=True)
     for template_name, output_name in TEMPLATES.items():
         content = env.get_template(template_name).render(data=data).rstrip("\n") + "\n"
-        output_path = OUTPUT_DIR / output_name
+        output_path = output_dir / output_name
         output_path.write_text(content, encoding="utf-8")
         print(f"Generated {output_path} ({len(content)} characters)")
 
-    if not STATIC_DIR.is_dir():
-        print(f"Warning: {STATIC_DIR} not found, skipping static assets", file=sys.stderr)
+    if not static_dir.is_dir():
+        print(f"Warning: {static_dir} not found, skipping static assets", file=sys.stderr)
         return
-    shutil.copytree(STATIC_DIR, OUTPUT_DIR, dirs_exist_ok=True)
-    print(f"Copied {STATIC_DIR} -> {OUTPUT_DIR}")
+    shutil.copytree(static_dir, output_dir, dirs_exist_ok=True)
+    print(f"Copied {static_dir} -> {output_dir}")
 
 
 if __name__ == "__main__":
