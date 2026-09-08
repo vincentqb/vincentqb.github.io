@@ -1,0 +1,38 @@
+exclude: ^docs/
+
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: "v0.16.6"
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+      - id: ruff-format
+
+  - repo: https://github.com/djlint/djLint
+    rev: "v1.46.1"
+    hooks:
+      - id: djlint-jinja
+        files: ^templates/.*\.j2$
+        args: [--extension=j2, --lint]
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: "v2.4.3"
+    hooks:
+      - id: codespell
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: "v6.0.0"
+    hooks:
+      - id: check-yaml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-merge-conflict
+
+  - repo: local
+    hooks:
+      - id: build-site
+        name: docs/ is up to date with templates and data
+        entry: sh -c 'uv run --script build.py && git diff --exit-code -- docs/'
+        language: system
+        pass_filenames: false
+        files: ^(build\.py|data\.yaml|templates/|static/)
