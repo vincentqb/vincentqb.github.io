@@ -15,6 +15,7 @@ from pathlib import Path
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+
 def build(
     data_file: Path = Path("data.yaml"),
     template_dir: Path = Path("templates"),
@@ -46,8 +47,4 @@ def build(
 
 
 if __name__ == "__main__":
-    try:
-        build()
-    except Exception as error:
-        print(f"Build failed: {error}", file=sys.stderr)
-        sys.exit(1)
+    build()
