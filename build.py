@@ -15,9 +15,6 @@ from pathlib import Path
 import yaml
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-TEMPLATES = {"index.html.j2": "index.html", "llms.txt.j2": "llms.txt"}
-
-
 def build(
     data_file: Path = Path("data.yaml"),
     template_dir: Path = Path("templates"),
@@ -33,9 +30,11 @@ def build(
     )
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    for template_name, output_name in TEMPLATES.items():
-        content = env.get_template(template_name).render(data=data).rstrip("\n") + "\n"
-        output_path = output_dir / output_name
+    for template_path in sorted(template_dir.glob("*.j2")):
+        if template_path.name.startswith("_"):
+            continue
+        content = env.get_template(template_path.name).render(data=data).rstrip("\n") + "\n"
+        output_path = output_dir / template_path.stem
         output_path.write_text(content, encoding="utf-8")
         print(f"Generated {output_path} ({len(content)} characters)")
 
