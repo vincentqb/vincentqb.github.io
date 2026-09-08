@@ -1,6 +1,6 @@
 # Vincent Quenneville-Bélair, PhD
 
-> Applied Mathematician & Machine Learning Scientist — Vincent Quenneville-Bélair, PhD — Applied Mathematician and Machine Learning Scientist. Supply Chain Forecasting at Amazon, creator of PyTorch torchaudio.
+> Applied Mathematician & Machine Learning Scientist — Vincent Quenneville-Bélair, PhD.
 
 ## Contact & Links
 - Website: https://vincentqb.github.io/
