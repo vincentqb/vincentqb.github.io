@@ -11,27 +11,28 @@
 
 ## Professional Experience
 ### Machine Learning Scientist — Supply Chain Optimization Technologies, Amazon (2021 – Present)
-- Build an autonomous search over optimization policies, using a Lean kernel to certify candidates and promote provably best ones.
-- Prototype predictive model for inventory placement, accelerating pipelines by reframing decision-making into a forecasting formulation.
-- Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners.
-- Design deep learning attention-based models to forecast product demand for supply chain optimization.
-- Leverage LLM embeddings and approximate nearest-neighbor retrieval to capture cross-product demand effects, sharing demand signal across semantically similar products.
+- Build an autonomous search over optimization policies, using a Lean kernel to certify candidates and promote provably best ones. The final algorithm cuts placement cost 10% and runtime from >2 hours to <2 minutes.
+- Prototype predictive model for inventory placement across >100 warehouses, accelerating pipelines by 10x by reframing decision-making into a forecasting formulation.
+- Lead vision and production launch of multimodal foundation forecasting model across >100M products, achieving zero-shot accuracy gains of >100 bps for external partners.
+- Use attention mechanism to design distribution-free model to forecast counterfactual demand for supply chain optimization; lifted profit >6% with latency <20 ms.
+- Leverage LLM embeddings and approximate nearest-neighbor retrieval to capture cross-product demand effects, sharing demand signal across semantically similar products, outperforming by >50 bps over production.
+- Develop RLSF (Reinforcement Learning from Sales Feedback) to align LLM-generated product descriptions to sales outcomes, using A/B experiment data for reward modeling.
 
 ### Machine Learning Engineer — PyTorch, Facebook AI (2019 – 2021)
 - Create torchaudio library, engaging over 200 open source contributors.
-- Develop speech-to-text and text-to-speech deep learning models.
-- Integrate novel PyTorch optimizers collaborating with academic and industrial researchers.
+- Develop speech-to-text and text-to-speech deep learning models, implementing efficient C++ and CUDA autograd operators, such as differentiable RNN-Transducer loss.
+- Integrate novel optimizers collaborating with academic and industrial researchers.
 
 ### Machine Learning Scientist — Supply Chain Forecasting and Marketing Measurement, Amazon (2017 – 2019)
-- Generate long-term strategic inventory capacity forecast. Model counterfactual scenarios. Optimize supply chain expansion recommendations.
-- Build causal impact models to estimate advertising campaign lift. Infer future returns and optimize advertising portfolio.
-- Teach internal machine learning specialization course series on matrix factorization, dimensionality reduction, and recommender systems.
+- Develop long-term strategic capacity forecast to generate supply chain expansion recommendations.
+- Build causal impact models to estimate advertising lift and optimize advertising portfolio.
+- Teach courses on matrix factorization, dimensionality reduction, recommender systems.
 
 ### Chief Data Scientist — Vizanda (2016 – 2017)
-- Develop web-based software to automatically extract information from structured and unstructured data on the fly. Process the information to programmatically generate relevant visualizations and intelligent insights.
+- Build real-time software to automatically extract information, visualizations, insights from unstructured data.
 
 ### Chu Assistant Professor of Applied Mathematics — Columbia University (2015 – 2017)
-- Model gravitational wave propagation to understand black hole collisions. Create and analyze novel specialized mixed finite element methods to simulate these models numerically.
+- Develop numerical simulations for physical systems using novel finite elements. Model gravitational waves to understand black hole collisions.
 
 ## Education
 - **PhD Applied Mathematics**, University of Minnesota
