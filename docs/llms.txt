@@ -11,7 +11,7 @@
 
 ## Professional Experience
 ### Machine Learning Scientist — Supply Chain Optimization Technologies, Amazon (2021 – Present)
-- Build a trustworthy autonomous search over optimization policies, using a Lean kernel to certify candidates and promote provably best ones. The final algorithm cuts placement cost 10% and runtime from >2 hours to <2 minutes.
+- Build a autonomous search over optimization policies, using a Lean kernel to certify candidates and promote provably best ones. The final algorithm cuts placement cost 10% and runtime from >2 hours to <2 minutes.
 - Prototype predictive model for inventory placement across >100 warehouses, accelerating pipelines by 10x by reframing decision-making into a forecasting formulation.
 - Lead vision and production launch of multimodal foundation forecasting model across >100M products, achieving zero-shot accuracy gains of >100 bps for external partners.
 - Use attention mechanism to design distribution-free model to forecast counterfactual demand for supply chain optimization; lifted profit >6% with latency <20 ms.
