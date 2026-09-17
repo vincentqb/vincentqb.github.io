@@ -1,0 +1,151 @@
+% The leantex port of vincentqb.github.io: one source, three outputs —
+% index.html, llms.txt (markdown), and a print resume (PDF) — from the same
+% document. Build with build-leantex.sh; compare against the Jinja build
+% with compare-leantex.py. See README.md.
+
+\documentclass{article}
+
+\pdfmeta{
+  author  = "Vincent Quenneville-Bélair",
+  title   = "Vincent Quenneville-Bélair, PhD",
+  subject = "Vincent Quenneville-Bélair, PhD.",
+}
+
+\output{
+  formats = html, md,
+  css = own,
+  stylesheet = "style.css",
+}
+
+\fonts{
+  body = "Inter",
+}
+
+% The site's palette, corrected to hold the engine's contrast contract.
+% The site's own values fail WCAG 2.2 SC 1.4.3 through the engine's
+% arithmetic: primary hsl(0,85%,54%) = #ED2626 reads 4.28:1 on white and
+% 4.10:1 on white-bis; Bulma's grey #69748C reads 4.49:1 on white-bis.
+% Same hues, darker: primary at 45% lightness (5.40:1 / 5.17:1) and the
+% grey at 44% (5.19:1 on white-bis). primary40 is Bulma's derived 40%
+% shade, kept for the timeline and the button, where it passes.
+\palette{
+  bg        = #FFFFFF,
+  primary   = #D41111,
+  primary40 = #BD0F0F,
+  muted     = #606A80,
+}
+
+\page{
+  size = letter,
+  vmargin = 0.5in,
+  hmargin = 0.75in,
+}
+
+\begin{document}
+
+% ---- Hero: name, degree, title, links -------------------------------------
+% The site renders this as an h1 inside a full-viewport hero with a navbar.
+% leantex has no masthead construct yet (gap: \maketitle should become
+% <header><h1>), so the hero is a centred block the stylesheet shapes.
+
+\begin{center}
+  {\sffamily\scshape\bfseries\Huge \primary{Vincent} Quenneville-Bélair, \primary{phd}}
+
+  {\Large Applied Mathematician}
+
+  \href{mailto:vincentqb@gmail.com}{Email} \middot
+  \href{https://linkedin.com/in/vincentqb}{LinkedIn} \middot
+  \href{https://github.com/vincentqb}{GitHub} \middot
+  \href{https://scholar.google.com/citations?user=B3XqkfMAAAAJ}{Google Scholar}
+
+  \muted{\href{#experience}{Experience} \middot
+  \href{#education}{Education} \middot
+  \href{#profile}{Profile}}
+\end{center}
+
+% ---- Experience ------------------------------------------------------------
+
+\section*{Experience}
+
+\block[before = 0ex]{
+  \subsection*{Machine Learning Scientist}
+  \primary{Supply Chain Optimization Technologies, Amazon}\\
+  \muted{\textit{2021 -- Present}}
+  \begin{itemize}
+    \item Build an autonomous search over optimization policies, using a Lean kernel to certify candidates and promote provably best ones.
+    \item Prototype predictive model for inventory placement, accelerating pipelines by reframing decision-making into a forecasting formulation.
+    \item Develop foundation forecasting model, unifying across products worldwide at multiple scales, deploying zero-shot for external partners.
+    \item Design deep learning attention-based models to forecast product demand for supply chain optimization.
+    \item Leverage LLM embeddings and approximate nearest-neighbor retrieval to capture cross-product demand effects, sharing demand signal across semantically similar products.
+  \end{itemize}
+}
+
+\block[before = 0ex]{
+  \subsection*{Machine Learning Engineer}
+  \primary{PyTorch, Facebook AI}\\
+  \muted{\textit{2019 -- 2021}}
+  \begin{itemize}
+    \item Create torchaudio library, engaging over 200 open source contributors.
+    \item Develop speech-to-text and text-to-speech deep learning models.
+    \item Integrate novel PyTorch optimizers collaborating with academic and industrial researchers.
+  \end{itemize}
+}
+
+\block[before = 0ex]{
+  \subsection*{Machine Learning Scientist}
+  \primary{Supply Chain Forecasting and Marketing Measurement, Amazon}\\
+  \muted{\textit{2017 -- 2019}}
+  \begin{itemize}
+    \item Generate long-term strategic inventory capacity forecast. Model counterfactual scenarios. Optimize supply chain expansion recommendations.
+    \item Build causal impact models to estimate advertising campaign lift. Infer future returns and optimize advertising portfolio.
+    \item Teach internal machine learning specialization course series on matrix factorization, dimensionality reduction, and recommender systems.
+  \end{itemize}
+}
+
+\block[before = 0ex]{
+  \subsection*{Chief Data Scientist}
+  \primary{Vizanda}\\
+  \muted{\textit{2016 -- 2017}}
+  \begin{itemize}
+    \item Develop web-based software to automatically extract information from structured and unstructured data on the fly. Process the information to programmatically generate relevant visualizations and intelligent insights.
+  \end{itemize}
+}
+
+\block[before = 0ex]{
+  \subsection*{Chu Assistant Professor of Applied Mathematics}
+  \primary{Columbia University}\\
+  \muted{\textit{2015 -- 2017}}
+  \begin{itemize}
+    \item Model gravitational wave propagation to understand black hole collisions. Create and analyze novel specialized mixed finite element methods to simulate these models numerically.
+  \end{itemize}
+}
+
+% ---- Education -------------------------------------------------------------
+
+\section*{Education}
+
+\begin{itemize}
+  \item \textbf{PhD Applied Mathematics}, \primary{University of Minnesota}\\
+    \muted{\textit{NSERC Alexander Graham Bell Canada Graduate Scholarship,
+    FQRNT Research Scholarship,
+    University of Minnesota Doctoral Dissertation Fellowship.}}
+  \item \textbf{MCS Computer Science}, \primary{University of Minnesota}
+  \item \textbf{MSc Applied Mathematics}, \primary{University of Minnesota}
+  \item \textbf{BSc Mathematics and Physics}, \primary{McGill University}
+\end{itemize}
+
+% ---- Profile ---------------------------------------------------------------
+
+\section*{Profile}
+
+\begin{center}
+  \includegraphics[width=192pt, alt={Vincent Quenneville-Bélair}]{profile.jpg}
+
+  Vincent Quenneville-Bélair, PhD, Applied Mathematician.
+\end{center}
+
+% A real anchor, not a scripted button: href="#" is the platform's own
+% return-to-top, smooth (and motion-safe) via CSS scroll-behavior.
+\muted{\href{#}{Top}}
+
+\end{document}

@@ -2,3 +2,6 @@ __pycache__/
 *.py[cod]
 .venv/
 .env
+leantex/profile.jpg
+docs-leantex/
+compare-out/

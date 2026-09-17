@@ -1,0 +1,404 @@
+/* The port's stylesheet: the site's own design (static/style.css), restated
+   over leantex's semantic output instead of Bulma's class soup. Linked by the
+   document itself: \output{ stylesheet = "style.css" }.
+
+   Colours are the corrected palette (see site.tex): the site's primary
+   hsl(0,85%,54%) and Bulma's grey fail WCAG 2.2 SC 1.4.3 through the
+   engine's own arithmetic (4.28:1 / 4.49:1); same hues, darker. */
+
+:root {
+    --primary: #d41111;        /* hsl(0,85%,45%): 5.40:1 on white */
+    --primary-40: #bd0f0f;     /* Bulma's derived 40% shade: timeline, button */
+    --grey: #606a80;           /* hsl(221,14%,44%): 5.19:1 on white-bis */
+    --white: #ffffff;
+    --white-bis: #fafafa;
+    --black: #000000;
+    --duration: 0.294s;        /* Bulma's --bulma-duration */
+    --easing: ease-out;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Helvetica, Arial, sans-serif;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 0;
+    line-height: 1.5;
+}
+
+/* Sections are full-bleed bands, as on the site; the measure lives on the
+   content, not on <main>. */
+main {
+    max-width: none;
+    margin: 0;
+}
+
+/* ---- Hero ---------------------------------------------------------------- */
+
+main > .centered:first-child {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--white);
+    padding: 1.5rem;
+    position: relative;
+}
+
+main > .centered:first-child > p:first-child {
+    /* the engine's .size-Huge span is 2.488em: 1.206rem × 2.488 = 3rem,
+       the site's h1 size */
+    font-size: 1.206rem;
+    line-height: 1.1;
+    margin: 0 0 1.25rem;
+}
+
+main > .centered:first-child > p:nth-child(2) {
+    /* .size-Large is 1.44em: 1.042rem × 1.44 = 1.5rem, the site's h2 */
+    font-size: 1.042rem;
+    font-weight: 400;
+    margin: 0.75rem 0 0;
+}
+
+/* Social links, where the site has icon links. */
+main > .centered:first-child > p:nth-child(3) {
+    margin-top: 0.75rem;
+    font-size: 1.25rem;
+}
+
+main > .centered:first-child > p:nth-child(3) a {
+    margin: 0 1.25rem;
+}
+
+/* In-page navigation, where the site has the navbar (top right). */
+main > .centered:first-child > p:nth-child(4) {
+    position: absolute;
+    top: 0.75rem;
+    right: 1.25rem;
+    margin: 0;
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+main > .centered:first-child > p:nth-child(4) a {
+    margin: 0 0.5rem;
+    transition: color var(--duration) var(--easing);
+}
+
+main > .centered:first-child > p:nth-child(4) a:hover {
+    color: var(--primary) !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--primary);
+    transition: color var(--duration) var(--easing);
+}
+
+/* ---- Section bands -------------------------------------------------------- */
+
+main > section {
+    padding: 6rem 1.5rem;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main > section > * {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main > section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-variant: small-caps;
+    letter-spacing: 0.05em;
+    color: var(--black);
+    text-align: center;
+    margin: 0 auto 2.5rem;
+}
+
+#experience { background: var(--white-bis); }
+#education  { background: var(--white); }
+#profile    { background: var(--white-bis); min-height: 70vh; }
+
+/* ---- Experience: the timeline --------------------------------------------- */
+
+#experience > * { max-width: 900px; }
+
+/* Consecutive bordered blocks draw the site's continuous timeline rule:
+   padding, not margin, keeps the line unbroken. */
+#experience > .spaced {
+    border-left: 3px solid var(--primary-40);
+    margin-top: 0 !important;   /* over the block's inline margin */
+    padding: 1.25rem 2rem 1.25rem 1.5rem;
+    position: relative;
+    transition: all var(--duration) var(--easing);
+}
+
+#experience > .spaced:hover {
+    border-left-color: var(--primary);
+    padding-right: 0.5rem;
+    padding-left: 3rem;
+}
+
+#experience > .spaced::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 1.6rem;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color: var(--primary-40);
+    transition: all var(--duration) var(--easing);
+}
+
+#experience > .spaced:hover::before {
+    background-color: var(--primary);
+    transform: scale(1.2);
+}
+
+#experience h3 {
+    color: var(--black);
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0 0 0.25rem;
+}
+
+/* The org line (accent, weight 500) with the dates under it in grey. */
+#experience > .spaced > p:nth-of-type(1) {
+    margin: 0 0 0.75rem;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+#experience > .spaced > p:nth-of-type(1) em {
+    font-weight: 400;
+    font-size: 0.75rem;
+}
+
+#experience ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+#experience li {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+}
+
+/* ---- Education ------------------------------------------------------------ */
+
+#education > * { max-width: 700px; }
+
+#education ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#education li {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.5;
+    padding: 0.75rem 1.5rem 0.75rem 0;
+    transition: all var(--duration) var(--easing);
+}
+
+#education li:hover {
+    padding-left: 1.5rem;
+    padding-right: 0;
+}
+
+#education li em {
+    font-size: 0.9rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+/* ---- Profile --------------------------------------------------------------- */
+
+#profile > .centered { max-width: 700px; }
+
+#profile img {
+    width: 256px;
+    height: 256px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary);
+    box-shadow: 0 8px 32px var(--primary-40);
+    transition: all var(--duration) var(--easing);
+    margin-bottom: 1rem;
+}
+
+#profile img:hover {
+    box-shadow: 0 12px 48px var(--primary);
+    transform: scale(1.05);
+}
+
+#profile p {
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ---- Return to top ---------------------------------------------------------
+   A real anchor (href="#"), not a scripted button. Revealed by scroll
+   position through a scroll-driven animation where the platform has one;
+   otherwise it is simply always visible — a degradation, not a breakage. */
+
+main > p:last-child {
+    margin: 0;
+}
+
+main > p:last-child a {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-40);
+    color: var(--white) !important;
+    border-radius: 50%;
+    font-size: 0.9rem;
+    z-index: 999;
+    box-shadow: 0 4px 16px var(--primary-40);
+    transition: all var(--duration) var(--easing);
+}
+
+main > p:last-child a:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--primary);
+}
+
+@supports (animation-timeline: scroll()) {
+    main > p:last-child a {
+        animation: reveal-on-scroll linear both;
+        animation-timeline: scroll();
+        animation-range: 0 300px;
+    }
+    @keyframes reveal-on-scroll {
+        from { opacity: 0; visibility: hidden; transform: translateY(20px); }
+        1% { opacity: 0; }
+        to { opacity: 1; visibility: visible; transform: translateY(0); }
+    }
+}
+
+/* ---- Reduced motion ---------------------------------------------------------
+   The invariant the site misses (WCAG 2.2 SC 2.3.3): every declared motion
+   carries its reduced-motion form. The engine's base sheet already disables
+   transitions; smooth scrolling and the scroll reveal follow here. */
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    main > p:last-child a { animation: none; }
+    * { transition: none !important; }
+}
+
+/* ---- Mobile ----------------------------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+    main > section {
+        padding: 4rem 1.25rem;
+        min-height: auto;
+    }
+
+    main > .centered:first-child { min-height: 90vh; }
+
+    main > .centered:first-child > p:first-child { font-size: 1.005rem; }
+
+    main > .centered:first-child > p:nth-child(2) { font-size: 0.868rem; }
+
+    /* The nav wraps under the top edge; the site collapses to a burger,
+       which needs a disclosure construct leantex does not have yet. */
+    main > .centered:first-child > p:nth-child(4) {
+        position: static;
+        order: -1;
+        margin-bottom: 2rem;
+    }
+
+    #profile img { width: 220px; height: 220px; }
+
+    #profile p { font-size: 0.9rem; padding: 0 1.25rem; }
+
+    main > p:last-child a {
+        bottom: 1rem;
+        right: 1rem;
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* ---- Print ------------------------------------------------------------------
+   Kept for parity with the site; the port's real answer to print is the
+   PDF built from the same source (site.pdf). */
+
+@media print {
+    @page { margin: 0.4in; size: letter; }
+
+    body { font-size: 9pt; line-height: 1.2; }
+
+    main > p:last-child a,
+    main > .centered:first-child > p:nth-child(4) { display: none; }
+
+    main > .centered:first-child,
+    main > section {
+        min-height: auto;
+        padding: 8pt 0;
+        background: var(--white);
+    }
+
+    main > .centered:first-child > p:first-child { font-size: 18pt; }
+
+    main > section h2 {
+        font-size: 12pt;
+        margin: 6pt 0 8pt;
+        border-bottom: 1px solid var(--grey);
+        padding-bottom: 3pt;
+    }
+
+    #experience > .spaced {
+        border-left: 1px solid var(--primary-40);
+        padding: 3pt 0 4pt 8pt;
+        break-inside: avoid;
+    }
+
+    #experience > .spaced::before { width: 5px; height: 5px; left: -4px; }
+
+    #experience h3 { font-size: 10pt; }
+
+    #experience li, #education li { font-size: 8pt; }
+
+    a::after { content: " (" attr(href) ")"; font-size: 8pt; }
+
+    a[href^="#"]::after { content: ""; }
+
+    #profile img {
+        width: 50px;
+        height: 50px;
+        border: 1px solid var(--grey);
+        box-shadow: none;
+    }
+}
