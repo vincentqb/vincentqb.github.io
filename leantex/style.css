@@ -122,6 +122,10 @@ main > .centered:has(> h1) {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+    /* Spacing lives on the container: flex items' margins never collapse, so
+       a margin-bottom here plus a margin-top there would sum (52px) where the
+       Jinja site's block context collapses them to the larger (32px). */
+    row-gap: 2rem;
     min-height: 54vh;
     padding: 1.5rem 1.5rem 0;
     background: var(--white);
@@ -133,7 +137,7 @@ main > .centered:has(> h1) h1 {
     font-weight: 700;
     font-variant: small-caps;
     line-height: 1.1;
-    margin: 0 0 1.25rem;
+    margin: 0;
     text-align: center;
 }
 
@@ -141,7 +145,7 @@ main > .centered:has(> h1) p {
     /* the site's .hero-body h2: --bulma-size-4, normal weight */
     font-size: 1.5rem;
     font-weight: 400;
-    margin: 2rem 0 0;
+    margin: 0;
 }
 
 main > .centered:has(> h1) p .size-large {
