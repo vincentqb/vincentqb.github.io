@@ -221,10 +221,13 @@ main > section h2 {
 
 /* Consecutive bordered blocks draw the site's continuous timeline rule:
    padding, not margin, keeps the line unbroken (the blocks themselves
-   declare before = 0ex, so no margin rule is needed here). */
+   declare before = 0ex, so no margin rule is needed here). The bottom
+   padding carries the inter-entry rhythm the reference spreads over
+   padding + margin + padding (20+20+20 = 60px text-to-text; measured
+   52px here before, with the last bullet's margin leaking in). */
 #experience > .spaced {
     border-left: 3px solid var(--primary40);
-    padding: 1.25rem 2rem 1.25rem 1.5rem;
+    padding: 1.25rem 2rem 2.5rem 1.5rem;
     position: relative;
     transition: all var(--duration) var(--easing);
 }
@@ -347,6 +350,38 @@ main > section h2 {
     line-height: 1.7;
     max-width: 500px;
     margin: 0 auto;
+}
+
+/* ---- Measured rhythm corrections (screen only) ------------------------------
+   Values below were derived by measuring what the reference RENDERS
+   (collapsed margins included), not from its declarations — the header bug
+   proved transcribed values can all agree while the realized gaps differ.
+   Scoped to screen because the acceptance for this audit froze the print
+   block's computed styles; the PDF (site.pdf) is the real print output and
+   is untouched by this sheet. */
+
+@media screen {
+    /* Reference text-to-text between timeline entries is 60px
+       (pad 20 + item margin 20 + pad 20); the entry's own last bullet
+       keeps no trailing margin there (p:last-child: 0). Here the entry
+       gap lives entirely in .spaced's bottom padding (see the timeline
+       comment), so the bullet's margin must not add to it. */
+    #experience li:last-child {
+        margin-bottom: 0;
+    }
+
+    /* the site's .experience-item h3: margin-bottom --bulma-size-7 (12px);
+       measured 12px rendered. Was mis-transcribed as 0.25rem. */
+    #experience h3 {
+        margin-bottom: 0.75rem;
+    }
+
+    /* the site's dates line (h5) carries --bulma-size-4 (24px) below it;
+       here org + dates are one paragraph, so its bottom margin plays that
+       role. Measured 24px rendered in the reference, 12px here before. */
+    #experience > .spaced > p:nth-of-type(1) {
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* ---- Return to top ---------------------------------------------------------
