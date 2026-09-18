@@ -1,7 +1,7 @@
 % The leantex port of vincentqb.github.io: one source, three outputs —
 % index.html, llms.txt (markdown), and a print resume (PDF) — from the same
 % document. Build with build-leantex.sh; compare against the Jinja build
-% with compare-leantex.py. See README.md.
+% with compare-leantex.js. See README.md.
 
 \documentclass{article}
 
@@ -9,15 +9,24 @@
   author  = "Vincent Quenneville-Bélair",
   title   = "Vincent Quenneville-Bélair, PhD",
   subject = "Vincent Quenneville-Bélair, PhD.",
+  url     = "https://vincentqb.github.io/",
+  image   = "https://vincentqb.github.io/profile.jpg",
+  favicon = "favicon.svg",
 }
 
 \output{
   formats = html, md,
+  md = "llms.txt",
   css = own,
   stylesheet = "style.css",
 }
 
+% Inter resolves against the machine, as on the Jinja site (a Google Fonts
+% load there); the fonts directory ships the Font Awesome 5 Free faces the
+% icons resolve against (SIL OFL 1.1, see fonts/LICENSE-FontAwesome.txt),
+% so the icons render the same on every host.
 \fonts{
+  dir  = "fonts",
   body = "Inter",
 }
 
@@ -35,32 +44,49 @@
   muted     = #606A80,
 }
 
+% The menu's interaction states, declared where the menu is: hover takes
+% the accent, and the transition duration is the site's own (Bulma's
+% --bulma-duration, 294ms). The reduced-motion guard travels with the
+% declaration by construction.
+\style{nav}{
+  hover  = primary,
+  motion = 294ms,
+}
+
 \page{
   size = letter,
   vmargin = 0.5in,
   hmargin = 0.75in,
 }
 
+% The document title is the level-0 heading: <header><h1> in HTML, the one
+% # in llms.txt, LARGE bold on the printed page.
+\title{\primary{Vincent} Quenneville-Bélair, \primary{{\scshape phd}}}
+\subtitle{Applied Mathematician}
+
 \begin{document}
 
+% ---- Menu: the site's navbar, a labeled navigation landmark ---------------
+% Web-only, as on the site (its print stylesheet hides the navbar): the
+% printed resume is one page and needs no in-page navigation.
+
+\begin{ifbackend}{html}
+\begin{nav}[label = Sections]
+\href{#experience}{Experience}
+\href{#education}{Education}
+\href{#profile}{Profile}
+\end{nav}
+\end{ifbackend}
+
 % ---- Hero: name, degree, title, links -------------------------------------
-% The site renders this as an h1 inside a full-viewport hero with a navbar.
-% leantex has no masthead construct yet (gap: \maketitle should become
-% <header><h1>), so the hero is a centred block the stylesheet shapes.
+
+\maketitle
 
 \begin{center}
-  {\sffamily\scshape\bfseries\Huge \primary{Vincent} Quenneville-Bélair, \primary{phd}}
-
-  {\Large Applied Mathematician}
-
-  \href{mailto:vincentqb@gmail.com}{Email} \middot
-  \href{https://linkedin.com/in/vincentqb}{LinkedIn} \middot
-  \href{https://github.com/vincentqb}{GitHub} \middot
-  \href{https://scholar.google.com/citations?user=B3XqkfMAAAAJ}{Google Scholar}
-
-  \muted{\href{#experience}{Experience} \middot
-  \href{#education}{Education} \middot
-  \href{#profile}{Profile}}
+  \href{mailto:vincentqb@gmail.com}{\faIcon[label = Email]{envelope}}
+  \href{https://linkedin.com/in/vincentqb}{\faIcon[label = LinkedIn]{linkedin}}
+  \href{https://github.com/vincentqb}{\faIcon[label = GitHub]{github}}
+  \href{https://scholar.google.com/citations?user=B3XqkfMAAAAJ}{\faIcon[label = Google Scholar]{graduation-cap}}
 \end{center}
 
 % ---- Experience ------------------------------------------------------------
@@ -144,8 +170,17 @@
   Vincent Quenneville-Bélair, PhD, Applied Mathematician.
 \end{center}
 
-% A real anchor, not a scripted button: href="#" is the platform's own
-% return-to-top, smooth (and motion-safe) via CSS scroll-behavior.
-\muted{\href{#}{Top}}
+% ---- Return to top ---------------------------------------------------------
+% The site's button, as declarations: a labeled landmark pinned to the
+% viewport corner, revealed after 300px of scroll (the site's own JS
+% threshold) — scroll-driven CSS where the platform has it, the engine's
+% constant script fallback elsewhere (release Firefox), always visible
+% with neither. Web-only: the printed page has no viewport.
+
+\begin{ifbackend}{html}
+\begin{nav}[label = Return to top, pin = bottom right, offset = 2em, reveal = 300px]
+\href{#top}{\faIcon[label = Return to top]{arrow-up}}
+\end{nav}
+\end{ifbackend}
 
 \end{document}

@@ -17,12 +17,16 @@ cp -f ../static/profile.jpg .
 mkdir -p "$OUT"
 "$LEANTEX" site.tex -o "$OUT/" --emit html,md,pdf
 
-# The web spellings of the two text outputs.
+# The web spelling of the page; the markdown twin is already written as
+# llms.txt — its served name is declared in site.tex, so the head's
+# alternate link and the file cannot drift.
 mv "$OUT/site.html" "$OUT/index.html"
-mv "$OUT/site.md" "$OUT/llms.txt"
 
 # Assets the page references.
 cp -f ../static/profile.jpg "$OUT/"
+cp -f ../static/favicon.svg "$OUT/"
 cp -f style.css "$OUT/"
+mkdir -p "$OUT/fonts"
+cp -f fonts/*.ttf fonts/LICENSE-FontAwesome.txt "$OUT/fonts/"
 
 echo "built $OUT: index.html, llms.txt, site.pdf"

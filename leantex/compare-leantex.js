@@ -67,6 +67,31 @@ function extractStructure() {
     const el = document.querySelector(sel);
     return el ? getComputedStyle(el).color : null;
   };
+  // The two fidelity nits, measured: the top menu's computed face and the
+  // awards line's face and spacing, from whichever selector the build uses.
+  const style = (sel, props) => {
+    const el = document.querySelector(sel);
+    if (!el) return null;
+    const cs = getComputedStyle(el);
+    const out = {};
+    for (const p of props) out[p] = cs[p];
+    return out;
+  };
+  const navMenu =
+    style('.navbar-menu .navbar-item',
+      ['fontWeight', 'fontSize', 'fontVariant', 'letterSpacing', 'color', 'fontFamily']) ||
+    style('nav[aria-label="Sections"] a',
+      ['fontWeight', 'fontSize', 'fontVariant', 'letterSpacing', 'color', 'fontFamily']);
+  const awards =
+    style('.awards-text',
+      ['fontSize', 'fontStyle', 'fontWeight', 'lineHeight', 'marginTop', 'color']) ||
+    style('#education li em',
+      ['fontSize', 'fontStyle', 'fontWeight', 'lineHeight', 'marginTop', 'color']);
+  const eduItem =
+    style('.education-item',
+      ['marginBottom', 'paddingTop', 'paddingBottom', 'fontSize']) ||
+    style('#education li',
+      ['marginBottom', 'paddingTop', 'paddingBottom', 'fontSize']);
   return {
     title: document.title,
     lang: document.documentElement.lang || null,
@@ -81,10 +106,11 @@ function extractStructure() {
       .filter(s => s.textContent.trim() || s.src).length,
     jsonld, headings, landmarks, sections, ids, inPage, imgs, measure,
     bodyFont: getComputedStyle(document.body).fontFamily.split(',')[0],
+    navMenu, awards, eduItem,
     accentSample: colour('#experience .experience-item h4') ||
-                  colour('#experience .entry-pair .group:first-child span'),
+                  colour('#experience .spaced > p:first-of-type > span'),
     mutedSample: colour('#experience .experience-item h5') ||
-                 colour('#experience .entry-pair .group:last-child span'),
+                 colour('#experience .spaced > p:first-of-type > span:nth-of-type(2)'),
   };
 }
 

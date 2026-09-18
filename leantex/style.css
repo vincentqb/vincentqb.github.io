@@ -6,6 +6,12 @@
    hsl(0,85%,54%) and Bulma's grey fail WCAG 2.2 SC 1.4.3 through the
    engine's own arithmetic (4.28:1 / 4.49:1); same hues, darker. */
 
+/* Inter as the site loads it (Google Fonts): the Jinja page gets the real
+   face on every machine; without this the port fell back to the system
+   sans wherever Inter was not installed — which is what made the menu
+   look heavier than the site's. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 :root {
     --primary: #d41111;        /* hsl(0,85%,45%): 5.40:1 on white */
     --primary-40: #bd0f0f;     /* Bulma's derived 40% shade: timeline, button */
@@ -15,6 +21,33 @@
     --black: #000000;
     --duration: 0.294s;        /* Bulma's --bulma-duration */
     --easing: ease-out;
+}
+
+/* The icon faces the document ships (fonts/, SIL OFL 1.1): the engine's
+   PDF backend finds them through its font scan; the page names them here.
+   Brands (400) follows Free (900) in the fallback list, so brand glyphs
+   fall through per character. */
+@font-face {
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+    font-display: block;
+    src: url('fonts/fa-solid-900.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Font Awesome 5 Brands';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url('fonts/fa-brands-400.ttf') format('truetype');
+}
+
+.icon {
+    font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands';
+    font-weight: 900;
+    font-style: normal;
+    line-height: 1;
 }
 
 html {
@@ -40,62 +73,31 @@ main {
     margin: 0;
 }
 
-/* ---- Hero ---------------------------------------------------------------- */
+/* ---- Menu: the navigation landmark ---------------------------------------
+   The site's navbar-menu, top right, scrolling away with the hero. The
+   computed style matches the site's .navbar-menu .navbar-item: 1rem,
+   weight 500 (Bulma's --bulma-weight-medium), small-caps, 0.05em tracking,
+   grey. Hover colour and its guarded transition come from the document's
+   own \style{nav}{ hover, motion } declaration, not from here. */
 
-main > .centered:first-child {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--white);
-    padding: 1.5rem;
-    position: relative;
-}
-
-main > .centered:first-child > p:first-child {
-    /* the engine's .size-Huge span is 2.488em: 1.206rem × 2.488 = 3rem,
-       the site's h1 size */
-    font-size: 1.206rem;
-    line-height: 1.1;
-    margin: 0 0 1.25rem;
-}
-
-main > .centered:first-child > p:nth-child(2) {
-    /* .size-Large is 1.44em: 1.042rem × 1.44 = 1.5rem, the site's h2 */
-    font-size: 1.042rem;
-    font-weight: 400;
-    margin: 0.75rem 0 0;
-}
-
-/* Social links, where the site has icon links. */
-main > .centered:first-child > p:nth-child(3) {
-    margin-top: 0.75rem;
-    font-size: 1.25rem;
-}
-
-main > .centered:first-child > p:nth-child(3) a {
-    margin: 0 1.25rem;
-}
-
-/* In-page navigation, where the site has the navbar (top right). */
-main > .centered:first-child > p:nth-child(4) {
+nav[aria-label="Sections"] {
     position: absolute;
     top: 0.75rem;
     right: 1.25rem;
+    z-index: 10;
+}
+
+nav[aria-label="Sections"] p {
     margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
     font-variant: small-caps;
     letter-spacing: 0.05em;
-    font-weight: 500;
+    color: var(--grey);
 }
 
-main > .centered:first-child > p:nth-child(4) a {
+nav[aria-label="Sections"] a {
     margin: 0 0.5rem;
-    transition: color var(--duration) var(--easing);
-}
-
-main > .centered:first-child > p:nth-child(4) a:hover {
-    color: var(--primary) !important;
 }
 
 a {
@@ -105,6 +107,63 @@ a {
 a:hover {
     color: var(--primary);
     transition: color var(--duration) var(--easing);
+}
+
+/* ---- Hero ------------------------------------------------------------------
+   The site's 100vh hero: the title block (\maketitle's centered div) and
+   the social icon row (the next centered div) share the viewport, name
+   sitting just above the middle. */
+
+main > .centered:has(> h1) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 54vh;
+    padding: 1.5rem 1.5rem 0;
+    background: var(--white);
+}
+
+main > .centered:has(> h1) h1 {
+    /* the site's .hero-body h1: --bulma-size-1, bold, small caps */
+    font-size: 3rem;
+    font-weight: 700;
+    font-variant: small-caps;
+    line-height: 1.1;
+    margin: 0 0 1.25rem;
+    text-align: center;
+}
+
+main > .centered:has(> h1) p {
+    /* the site's .hero-body h2: --bulma-size-4, normal weight */
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 2rem 0 0;
+}
+
+main > .centered:has(> h1) p .size-large {
+    font-size: 1em;
+}
+
+main > .centered:has(.icon) {
+    /* the site's .social-icons: --bulma-size-4 glyphs, black */
+    min-height: 40vh;
+    padding: 0 1.5rem;
+    background: var(--white);
+}
+
+main > .centered:has(.icon) p {
+    margin: 2rem 0 0;
+    font-size: 1.5rem;
+}
+
+main > .centered:has(.icon) a {
+    margin: 0 1.25rem;
+    color: var(--black) !important;
+}
+
+main > .centered:has(.icon) a:hover {
+    color: var(--primary) !important;
 }
 
 /* ---- Section bands -------------------------------------------------------- */
@@ -215,10 +274,12 @@ main > section h2 {
 }
 
 #education li {
+    /* the site's .education-item rhythm: 12px below each entry, none above */
     font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.5;
-    padding: 0.75rem 1.5rem 0.75rem 0;
+    padding: 0 1.5rem 0.75rem 0;
+    margin-bottom: 0.75rem;
     transition: all var(--duration) var(--easing);
 }
 
@@ -227,10 +288,19 @@ main > section h2 {
     padding-right: 0;
 }
 
+/* The awards line: the site's .awards-text is its own block — 12px
+   (--bulma-size-7) italic grey, 1.5 line height, 16px above. The port's
+   spelling is an inline run after a line break, so the run becomes the
+   block and the break bows out. */
+#education li br { display: none; }
+
 #education li em {
-    font-size: 0.9rem;
+    display: block;
+    font-size: 0.75rem;
     font-weight: 400;
+    font-style: italic;
     line-height: 1.5;
+    margin-top: 1rem;
 }
 
 /* ---- Profile --------------------------------------------------------------- */
@@ -261,18 +331,15 @@ main > section h2 {
 }
 
 /* ---- Return to top ---------------------------------------------------------
-   A real anchor (href="#"), not a scripted button. Revealed by scroll
-   position through a scroll-driven animation where the platform has one;
-   otherwise it is simply always visible — a degradation, not a breakage. */
+   The pinned nav declares its own placement and reveal in site.tex; the
+   engine emits the fixed positioning, the scroll-driven CSS, and its
+   script fallback. This block only shapes the circle. */
 
-main > p:last-child {
+nav[aria-label="Return to top"] p {
     margin: 0;
 }
 
-main > p:last-child a {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
+nav[aria-label="Return to top"] a {
     width: 50px;
     height: 50px;
     display: flex;
@@ -282,38 +349,24 @@ main > p:last-child a {
     color: var(--white) !important;
     border-radius: 50%;
     font-size: 0.9rem;
-    z-index: 999;
     box-shadow: 0 4px 16px var(--primary-40);
     transition: all var(--duration) var(--easing);
 }
 
-main > p:last-child a:hover {
+nav[aria-label="Return to top"] a:hover {
     background: var(--primary);
     transform: translateY(-2px);
     box-shadow: 0 6px 20px var(--primary);
 }
 
-@supports (animation-timeline: scroll()) {
-    main > p:last-child a {
-        animation: reveal-on-scroll linear both;
-        animation-timeline: scroll();
-        animation-range: 0 300px;
-    }
-    @keyframes reveal-on-scroll {
-        from { opacity: 0; visibility: hidden; transform: translateY(20px); }
-        1% { opacity: 0; }
-        to { opacity: 1; visibility: visible; transform: translateY(0); }
-    }
-}
-
 /* ---- Reduced motion ---------------------------------------------------------
    The invariant the site misses (WCAG 2.2 SC 2.3.3): every declared motion
-   carries its reduced-motion form. The engine's base sheet already disables
-   transitions; smooth scrolling and the scroll reveal follow here. */
+   carries its reduced-motion form. The engine guards its own declared
+   transitions; smooth scrolling and this sheet's transitions follow here.
+   (The engine's reveal itself only fades, which is not motion.) */
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    main > p:last-child a { animation: none; }
     * { transition: none !important; }
 }
 
@@ -325,27 +378,25 @@ main > p:last-child a:hover {
         min-height: auto;
     }
 
-    main > .centered:first-child { min-height: 90vh; }
-
-    main > .centered:first-child > p:first-child { font-size: 1.005rem; }
-
-    main > .centered:first-child > p:nth-child(2) { font-size: 0.868rem; }
-
-    /* The nav wraps under the top edge; the site collapses to a burger,
-       which needs a disclosure construct leantex does not have yet. */
-    main > .centered:first-child > p:nth-child(4) {
+    /* The nav flows at the top; the site collapses to a burger, which
+       needs a disclosure construct leantex does not have yet. */
+    nav[aria-label="Sections"] {
         position: static;
-        order: -1;
-        margin-bottom: 2rem;
+        padding: 1rem 1.25rem 0;
+        text-align: center;
     }
+
+    main > .centered:has(> h1) { min-height: 48vh; }
+
+    main > .centered:has(> h1) h1 { font-size: 2.5rem; }
+
+    main > .centered:has(> h1) p { font-size: 1.25rem; }
 
     #profile img { width: 220px; height: 220px; }
 
     #profile p { font-size: 0.9rem; padding: 0 1.25rem; }
 
-    main > p:last-child a {
-        bottom: 1rem;
-        right: 1rem;
+    nav[aria-label="Return to top"] a {
         width: 45px;
         height: 45px;
     }
@@ -360,17 +411,18 @@ main > p:last-child a:hover {
 
     body { font-size: 9pt; line-height: 1.2; }
 
-    main > p:last-child a,
-    main > .centered:first-child > p:nth-child(4) { display: none; }
+    nav[aria-label="Sections"],
+    nav[aria-label="Return to top"] { display: none; }
 
-    main > .centered:first-child,
+    main > .centered:has(> h1),
+    main > .centered:has(.icon),
     main > section {
         min-height: auto;
         padding: 8pt 0;
         background: var(--white);
     }
 
-    main > .centered:first-child > p:first-child { font-size: 18pt; }
+    main > .centered:has(> h1) h1 { font-size: 18pt; margin: 0; }
 
     main > section h2 {
         font-size: 12pt;
