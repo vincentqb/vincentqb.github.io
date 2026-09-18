@@ -454,6 +454,12 @@ nav[aria-label="Return to top"] a:hover {
         min-height: auto;
     }
 
+    /* the site's mobile .section-slide h2: margin-bottom drops to
+       --bulma-size-3 (32px); measured 32px rendered at 360 and 768. */
+    main > section h2 {
+        margin-bottom: 2rem;
+    }
+
     /* The nav flows at the top; the site collapses to a burger, which
        needs a disclosure construct leantex does not have yet. */
     nav[aria-label="Sections"] {
