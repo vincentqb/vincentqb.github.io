@@ -382,6 +382,15 @@ main > section h2 {
     #experience > .spaced > p:nth-of-type(1) {
         margin-bottom: 1.5rem;
     }
+
+    /* The engine's base li rule (margin: 0.25rem 0) pushed the first
+       degree 4px below the ul — the section h2 gap read 44px against the
+       reference's 40. The ul is a flex item, so the stray margin-top does
+       not collapse away; zero it. Entry-to-entry stays 12px (the bottom
+       margin already wins the sibling collapse). */
+    #education li {
+        margin-top: 0;
+    }
 }
 
 /* ---- Return to top ---------------------------------------------------------
