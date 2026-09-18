@@ -112,6 +112,18 @@ nav[aria-label="Sections"] a:hover {
     color: var(--primary) !important;
 }
 
+/* ---- Layout rule (unenforced — no lint here runs on CSS) -------------------
+   In a flex or grid container, spacing between children is declared with
+   gap / row-gap, never with child margins: flex items' margins do not
+   collapse, so a margin-bottom meeting a margin-top SUMS where the
+   reference's block context takes the MAX. The header shipped with exactly
+   this bug (52px against the reference's 32px) and the numbers all looked
+   right individually. Two audited exceptions, safe because summing needs
+   two nonzero terms: a single-sided child margin (h2's margin-bottom in
+   the section bands, where one row-gap cannot express two different gaps),
+   and padding (the timeline blocks, where a gap would puncture the
+   border-left rule). If you add a margin-top under either, re-measure. */
+
 /* ---- Hero ------------------------------------------------------------------
    The site's 100vh hero: the title block (\maketitle's centered div) and
    the social icon row (the next centered div) share the viewport, name
