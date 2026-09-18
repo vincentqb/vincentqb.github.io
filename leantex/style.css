@@ -391,6 +391,21 @@ main > section h2 {
     #education li {
         margin-top: 0;
     }
+
+    /* the site's .section-profile img: margin-bottom --bulma-size-3 (32px);
+       measured 38px rendered edge-to-edge (32 + the line box below the
+       inline image). Was mis-transcribed as 1rem. The image's paragraph
+       keeps the body line height: in the reference the image sits directly
+       in .profile-content (line height 1.5); this port wraps it in a <p>,
+       and the bio paragraph's 1.7 was leaking under the image, reading
+       39.5–40.2px. */
+    #profile img {
+        margin-bottom: 2rem;
+    }
+
+    #profile p:has(img) {
+        line-height: 1.5;
+    }
 }
 
 /* ---- Return to top ---------------------------------------------------------
