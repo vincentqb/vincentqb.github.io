@@ -103,9 +103,13 @@ a {
     text-decoration: none;
 }
 
-a:hover {
-    color: var(--primary);
-    transition: color var(--duration) var(--easing);
+/* Engine workaround: \href emits inline style="color: inherit" on every
+   anchor, which beats the engine's own emitted nav a:hover rule (from the
+   document's \style{nav}{hover}) — so the declared hover never fired. The
+   !important restores it, as the icon rows below already do. The engine
+   should let its declared hover win over its own inline style. */
+nav[aria-label="Sections"] a:hover {
+    color: var(--primary) !important;
 }
 
 /* ---- Hero ------------------------------------------------------------------
