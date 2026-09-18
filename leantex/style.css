@@ -12,12 +12,11 @@
    look heavier than the site's. */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+/* Colour tokens come from the document: \palette in site.tex emits
+   --primary, --primary40, --muted, --bg, --whitebis into :root. This
+   sheet declares only what the palette has no role for. */
 :root {
-    --primary: #d41111;        /* hsl(0,85%,45%): 5.40:1 on white */
-    --primary-40: #bd0f0f;     /* Bulma's derived 40% shade: timeline, button */
-    --grey: #606a80;           /* hsl(221,14%,44%): 5.19:1 on white-bis */
     --white: #ffffff;
-    --white-bis: #fafafa;
     --black: #000000;
     --duration: 0.294s;        /* Bulma's --bulma-duration */
     --easing: ease-out;
@@ -55,12 +54,12 @@ html {
 }
 
 body {
-    background: var(--white);
+    background: var(--white);   /* baseCss paints --surface (#fafaf9): the
+                                   palette's bg token does not reach it */
     color: var(--black);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
         Roboto, Helvetica, Arial, sans-serif;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     padding: 0;
     line-height: 1.5;
@@ -93,7 +92,7 @@ nav[aria-label="Sections"] p {
     font-weight: 500;
     font-variant: small-caps;
     letter-spacing: 0.05em;
-    color: var(--grey);
+    color: var(--muted);
 }
 
 nav[aria-label="Sections"] a {
@@ -192,19 +191,19 @@ main > section h2 {
     margin: 0 auto 2.5rem;
 }
 
-#experience { background: var(--white-bis); }
+#experience { background: var(--whitebis); }
 #education  { background: var(--white); }
-#profile    { background: var(--white-bis); min-height: 70vh; }
+#profile    { background: var(--whitebis); min-height: 70vh; }
 
 /* ---- Experience: the timeline --------------------------------------------- */
 
 #experience > * { max-width: 900px; }
 
 /* Consecutive bordered blocks draw the site's continuous timeline rule:
-   padding, not margin, keeps the line unbroken. */
+   padding, not margin, keeps the line unbroken (the blocks themselves
+   declare before = 0ex, so no margin rule is needed here). */
 #experience > .spaced {
-    border-left: 3px solid var(--primary-40);
-    margin-top: 0 !important;   /* over the block's inline margin */
+    border-left: 3px solid var(--primary40);
     padding: 1.25rem 2rem 1.25rem 1.5rem;
     position: relative;
     transition: all var(--duration) var(--easing);
@@ -224,7 +223,7 @@ main > section h2 {
     width: 13px;
     height: 13px;
     border-radius: 50%;
-    background-color: var(--primary-40);
+    background-color: var(--primary40);
     transition: all var(--duration) var(--easing);
 }
 
@@ -313,7 +312,7 @@ main > section h2 {
     border-radius: 50%;
     object-fit: cover;
     border: 4px solid var(--primary);
-    box-shadow: 0 8px 32px var(--primary-40);
+    box-shadow: 0 8px 32px var(--primary40);
     transition: all var(--duration) var(--easing);
     margin-bottom: 1rem;
 }
@@ -345,11 +344,11 @@ nav[aria-label="Return to top"] a {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--primary-40);
+    background: var(--primary40);
     color: var(--white) !important;
     border-radius: 50%;
     font-size: 0.9rem;
-    box-shadow: 0 4px 16px var(--primary-40);
+    box-shadow: 0 4px 16px var(--primary40);
     transition: all var(--duration) var(--easing);
 }
 
@@ -360,14 +359,12 @@ nav[aria-label="Return to top"] a:hover {
 }
 
 /* ---- Reduced motion ---------------------------------------------------------
-   The invariant the site misses (WCAG 2.2 SC 2.3.3): every declared motion
-   carries its reduced-motion form. The engine guards its own declared
-   transitions; smooth scrolling and this sheet's transitions follow here.
-   (The engine's reveal itself only fades, which is not motion.) */
+   The engine's baseCss already zeroes animation and transition under
+   prefers-reduced-motion; only this sheet's own smooth scrolling needs
+   its guard here. */
 
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
-    * { transition: none !important; }
 }
 
 /* ---- Mobile ----------------------------------------------------------------- */
@@ -427,12 +424,12 @@ nav[aria-label="Return to top"] a:hover {
     main > section h2 {
         font-size: 12pt;
         margin: 6pt 0 8pt;
-        border-bottom: 1px solid var(--grey);
+        border-bottom: 1px solid var(--muted);
         padding-bottom: 3pt;
     }
 
     #experience > .spaced {
-        border-left: 1px solid var(--primary-40);
+        border-left: 1px solid var(--primary40);
         padding: 3pt 0 4pt 8pt;
         break-inside: avoid;
     }
@@ -450,7 +447,7 @@ nav[aria-label="Return to top"] a:hover {
     #profile img {
         width: 50px;
         height: 50px;
-        border: 1px solid var(--grey);
+        border: 1px solid var(--muted);
         box-shadow: none;
     }
 }
