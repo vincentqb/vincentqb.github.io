@@ -15,7 +15,7 @@ OUT=../docs-leantex
 cp -f ../static/profile.jpg .
 
 mkdir -p "$OUT"
-"$LEANTEX" site.tex -o "$OUT/" --emit html,md,pdf
+"$LEANTEX" site.tex -o "$OUT/"
 
 # The web spelling of the page; the markdown twin is already written as
 # llms.txt — its served name is declared in site.tex, so the head's
