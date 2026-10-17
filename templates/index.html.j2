@@ -16,6 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ data.person.name }}, {{ data.person.degrees }}</title>
     <meta name="description" content="{{ data.person.description }}">
+    <meta name="theme-color" content="#{{ data.palette.accent.srgb }}">
+    <meta name="accent-pantone" content="{{ data.palette.accent.pantone }}">
     <link rel="canonical" href="{{ data.person.url }}">
     <link rel="alternate" type="text/markdown" href="{{ data.person.url }}llms.txt" title="LLMs.txt">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -93,6 +95,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/solid.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bulma-primary-h: {{ accent_hsl[0] }}deg;
+            --bulma-primary-s: {{ accent_hsl[1] }}%;
+            --bulma-primary-l: {{ accent_hsl[2] }}%;
+        }
+    </style>
 </head>
 
 <body>

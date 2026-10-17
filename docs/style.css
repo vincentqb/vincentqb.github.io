@@ -18,10 +18,12 @@
     --bulma-info-s: 0%;
     --bulma-info-l: 40%;
 
-    /* Primary - Amazon Smile Orange #FF6200 */
-    --bulma-primary-h: 23deg;
-    --bulma-primary-s: 100%;
-    --bulma-primary-l: 50%;
+    /* Primary comes from data.yaml, rendered into the page's :root.
+       Until 2026-10-17: Amazon Smile Orange #FF6200
+       --bulma-primary-h: 23deg;
+       --bulma-primary-s: 100%;
+       --bulma-primary-l: 50%;
+    */
 
     /* Danger - Darker red than primary */
     --bulma-danger-h: 0deg;

@@ -1,7 +1,7 @@
 # Canonical: data.yaml at the cv repo root -- the ONLY editable copy. The copy
 # at vincentqb.github.io/data.yaml is generated from it by `just site`; never
-# edit the copy. Renderings: resume/render.py -> resume/body.tex (\input by the
-# resume frame), and the site's build.py -> docs/.
+# edit the copy. Renderings: render.py + each document's .tex.j2 -> .tex,
+# and the site's build.py + templates/ -> docs/.
 #
 # This file is the source of truth: it carries both the facts and the curated
 # wording of the published story (see AGENTS.md). Wording variants archive here
@@ -14,6 +14,21 @@
 
 site:
   google_analytics_id: "G-3YKX90BJMC"
+
+# 2026-10-17: return to red across all three renderings. Jukebox's Colorplan
+# Bright Red preview is #F43A31; Warm Red C is the nearest of the relevant
+# Pantone reds compared. The sRGB companion is a screen approximation, not a
+# measurement of dyed stock. Use the Pantone name for the face and custom edge.
+# https://www.jukeboxprint.com/triplex-business-cards
+# https://www.pantone.com/color-finder/warm-red-c
+# The CMYK alternate is the sRGB companion converted to CGATS21_CRPC1 with
+# LittleCMS (relative colorimetric, black-point compensation), rounded to
+# 0/100/94/0. It is a PDF preview/fallback, not a Pantone Bridge recipe.
+palette:
+  accent:
+    pantone: "PANTONE Warm Red C"
+    srgb: "F9423A"
+    cmyk_alternate: "0,1,.94,0"
 
 person:
   name: "Vincent Quenneville-Bélair"
